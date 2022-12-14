@@ -49,7 +49,7 @@ const Signup = () => {
               </button>
             </form>
 
-            {error && <div>Signup failed</div>}
+            {/* {error && <div>Signup failed</div>} */}
           </div>
         </div>
       </div>
