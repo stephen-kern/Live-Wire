@@ -40,7 +40,7 @@ const resolvers = {
 
       return { token, user };
     },
-    saveReview: async (parent, { input }, context) => {
+    savedReview: async (parent, { input }, context) => {
       if (context.user) {
         const addSavedReview = await User.findOneAndUpdate(
           { _id: context.user._id },

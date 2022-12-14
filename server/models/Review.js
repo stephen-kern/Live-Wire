@@ -19,6 +19,14 @@ const reviewSchema = new Schema(
             type: String,
             required: true
         },
+        location: {
+            type: String,
+            required: true
+        },
+        artist: {
+            type: String,
+            required: true
+        },
         reactions: [reactionSchema],
     },
     {

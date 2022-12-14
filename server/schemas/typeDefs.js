@@ -12,9 +12,19 @@ const typeDefs = gql`
 
   type Review {
     reviewId: String!
-    band: String!
-    venue: String!
-    review: String    
+    artist: String!
+    location: String!
+    reviewText: String
+    createdAt: String 
+    reactionCount: Int
+    reactions: [Reaction]
+  }
+
+  type Reaction {
+    _id: ID
+    reactionBody: String
+    createdAt: String
+    username: String
   }
 
   type Auth {
