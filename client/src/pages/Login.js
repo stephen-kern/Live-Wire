@@ -7,8 +7,8 @@ const Login = (props) => {
     // login code here
 
     return (
-        <main className='main-cont'>
-            <div className='card-container'>
+        <main className='flex-row justify-center mb-4'>
+            <div className='card-container card-cont-custom col-12 col-md-8 justify-center'>
                 <div className='card'>
                     <h4 className='card-header'>Login:</h4>
                     <div className='card-body'>

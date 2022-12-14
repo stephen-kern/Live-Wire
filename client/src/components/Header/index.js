@@ -11,10 +11,10 @@ const Header = () => {
   };
 
   return (
-    <header className="m-4 flex-row align-center">
+    <header className="m-4 flex-row align-center head-cont">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <Link to="/">
-          <h1 className="mb-0 h1"> Live Wire </h1>
+          <h1 className="mb-0 h1 main-head"> Live Wire </h1>
         </Link>
 
         <nav className="text-center">
@@ -27,8 +27,8 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Signup</Link>
+              <Link to="/login" className="link-to">Login</Link>
+              <Link to="/signup" className="link-to">Signup</Link>
             </>
           )}
         </nav>

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 // === Component Imports === 
 import Header from "./components/Header";
+// === Page Imports ===
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
