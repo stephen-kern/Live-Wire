@@ -1,16 +1,19 @@
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
+const dateFormat = require('../utils/dateFormat');
 
 const reviewSchema = new Schema(
     {
         reviewText: {
             type: String,
             required: true,
-            max_length: 280
+            minlength: 1,
+            maxlength: 1250
         },
         createdAt: {
             type: Date,
-            default: Date.now
+            default: Date.now,
+            get: timestamp => dateFormat(timestamp)
         },
         username: {
             type: String,
