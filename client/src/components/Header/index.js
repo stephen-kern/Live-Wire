@@ -12,7 +12,9 @@ const Header = () => {
     return (
         <header>
             <div>
-                
+                <Link to="/">
+                    <h1> Live Wire </h1>
+                </Link>
             </div>
         </header>
     )
