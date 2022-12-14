@@ -1,7 +1,8 @@
 // ===IMPORTS===
 import React from "react";
-import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
+import { Link } from "react-router-dom";
+
 
 const Header = () => {
   const logout = (event) => {
@@ -10,10 +11,10 @@ const Header = () => {
   };
 
   return (
-    <header className="mb-4 py-2 flex-row align-center">
+    <header className="m-4 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <Link to="/">
-          <h1 className="navbar-brand mb-0 h1"> Live Wire </h1>
+          <h1 className="mb-0 h1"> Live Wire </h1>
         </Link>
 
         <nav className="text-center">
