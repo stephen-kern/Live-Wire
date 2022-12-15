@@ -5,9 +5,12 @@ import { POST_REVIEW } from "../utils/mutations";
 import { QUERY_REVIEW, QUERY_ME } from "../utils/queries";
 
 const Compose = () => {
-  const [reviewText, setText] = useState("");
-  const [artistText, setArtist] = useState('');
-  const [locationText, setLocation] = useState('');
+  const [formState, setFormState] = useState({
+    artist: '',
+    location: '',
+    reviewText: '',
+  });
+  const { artist, location, reviewText } = formState;
   const [characterCount, setCharacterCount] = useState(0);
 
   const [postReview, { error }] = useMutation(POST_REVIEW, {
@@ -32,18 +35,10 @@ const Compose = () => {
 
   const handleTextChange = (event) => {
     if (event.target.value.length <= 1250) {
-      setText(event.target.value);
+      setFormState(event.target.value);
       setCharacterCount(event.target.value.length);
     }
   };
-
-  const handleArtistChange = (event) => {
-    setArtist(event.target.value);
-  }
-
-  const handleLocationChange = (event) => {
-    setLocation(event.target.value);
-  }
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -53,7 +48,7 @@ const Compose = () => {
         variables: { reviewText, artist, location }
       });
 
-      setText("");
+      setFormState("");
       setCharacterCount(0);
     } catch (e) {
       console.log(e);
@@ -67,12 +62,12 @@ const Compose = () => {
           className="flex-row justify-center justify-space-between-md align-stretch"
           onSubmit={handleFormSubmit}
         >
-            <input className="artist-input" placeholder="Who's playing?" value={artistText} onChange={handleArtistChange} />
-            <input className="location-input" placeholder="Where at?" value={locationText} onChange={handleLocationChange} />
+            <input className="artist-input" placeholder="Who's playing?" value={formState} onChange={handleTextChange} />
+            <input className="location-input" placeholder="Where at?" value={formState} onChange={handleTextChange} />
 
           <textarea
             placeholder="Here's what I'm thinking"
-            value={reviewText}
+            value={formState}
             className="form-input col-12 col-md-9"
             onChange={handleTextChange}
           ></textarea>
