@@ -42,7 +42,7 @@ const resolvers = {
     },
     postReview: async (parent, { input }, context) => {
       if (context.user) {
-        const addSavedReview = await User.findOneAndUpdate(
+        const addPostReview = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { postReview: input } },
           { new: true }

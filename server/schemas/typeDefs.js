@@ -7,7 +7,8 @@ const typeDefs = gql`
     username: String
     email: String
     reviewCount: Int
-    savedReview: [Review]
+    postReview: [Review]
+    bandmates: [User]
   }
 
   type Review {
@@ -16,13 +17,13 @@ const typeDefs = gql`
     location: String!
     reviewText: String
     createdAt: String 
-    reactionCount: Int
-    reactions: [Reaction]
+    commentCount: Int
+    comment: [Comment]
   }
 
-  type Reaction {
+  type Comment {
     _id: ID
-    reactionBody: String
+    commentBody: String
     createdAt: String
     username: String
   }
