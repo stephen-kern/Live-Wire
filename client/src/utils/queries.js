@@ -40,7 +40,10 @@ export const QUERY_USER = gql`
           createdAt
         }
       }
-      bandmates
+      bandmates {
+        _id
+        username
+      }
     }
   }
 `;
@@ -64,21 +67,3 @@ export const QUERY_REVIEW = gql`
   }
 `;
 
-// QUERY_COMMENT
-export const QUERY_COMMENT = gql`
-  query comment($id: ID!) {
-    comment(_id: $id) {
-      _id
-      reviewText
-      createdAt
-      username
-      reviewCount
-      comments {
-        _id
-        createdAt
-        username
-        commentBody
-      }
-    }
-  }
-`;
