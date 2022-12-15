@@ -38,8 +38,8 @@ const typeDefs = gql`
 
   input reviewInput {
     reviewId: String!
-    band: String!
-    venue: String!
+    artist: String!
+    location: String!
     description: String    
   }
 
