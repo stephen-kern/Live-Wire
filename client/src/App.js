@@ -14,6 +14,7 @@ import Header from "./components/Header";
 // === Page Imports ===
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Compose from './pages/Compose';
 
 
 const httpLink = createHttpLink({
@@ -46,6 +47,7 @@ function App() {
               <Routes>
                 <Route path="login" element={<Login />} />
                 <Route path="signup" element={<Signup />} />
+                <Route path="compose" element={<Compose />} />
               </Routes>
             </div>
           </div>

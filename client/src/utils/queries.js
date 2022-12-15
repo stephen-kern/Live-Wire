@@ -7,11 +7,19 @@ export const QUERY_ME = gql`
       username
       email
       reviewCount
-      postReview {
+      reviews {
         _id
         createdAt
+        artist
+        location
         reviewText
-        username
+        commentCount
+        comment {
+          _id
+          createdAt
+          commentBody
+          username
+        }
       }
       bandmates {
         _id
@@ -32,6 +40,8 @@ export const QUERY_USER = gql`
         _id
         createdAt
         reviewText
+        artist
+        location
         username
         comments {
           _id
