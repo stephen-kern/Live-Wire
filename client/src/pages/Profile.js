@@ -7,6 +7,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import { ADD_BANDMATE } from "../utils/mutations";
 import Auth from "../utils/auth";
+import BandmatesList from "../components/BandmatesList";
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -55,10 +56,10 @@ const Profile = () => {
         </div>
 
         <div className="col-12 col-lg-3 mb-3">
-          <FriendList
+          <BandmatesList
             username={user.username}
-            friendCount={user.friendCount}
-            friends={user.friends}
+            bandmateCount={user.bandmateCount}
+            bandmates={user.bandmates}
           />
         </div>
       </div>
@@ -66,3 +67,5 @@ const Profile = () => {
     </div>
   );
 };
+
+export default Profile;
