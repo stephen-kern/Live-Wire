@@ -48,6 +48,8 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     postReview(input: reviewInput): User
     removeReview(reviewId: String!): User
+    addComment(reviewId: ID!, commentBody: String!): Thought
+    addBandmate(bandmateId: ID!): User
   }
 `;
 

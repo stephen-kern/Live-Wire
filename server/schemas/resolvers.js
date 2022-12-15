@@ -62,15 +62,15 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    addComment: async (parent, { commentId, commentBody }, context) => {
+    addComment: async (parent, { reviewId, commentBody }, context) => {
       if (context.user) {
-        const updatedComment = await Thought.findOneAndUpdate(
-          { _id: commentId },
+        const updatedReview = await Thought.findOneAndUpdate(
+          { _id: thoughtId },
           { $push: { comment: { commentBody, username: context.user.username } } },
           { new: true, runValidators: true }
         );
 
-        return updatedComment;
+        return updatedReview;
       }
 
       throw new AuthenticationError('You need to be logged in!');
