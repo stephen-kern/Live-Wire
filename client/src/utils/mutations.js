@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { gql } from '@apollo/client';
 
 export const LOGIN = gql`
@@ -13,7 +14,7 @@ export const LOGIN = gql`
 
 export const ADD_REVIEW = gql`
   mutation addReview($input: reviewInput!) {
-    addOrder(input: $input) {
+    addReview(input: $input) {
       reviewText
       createdAt
       username
@@ -49,3 +50,10 @@ export const ADD_USER = gql`
     }
   }
 `;
+=======
+// ADD_REVIEW
+// ADD_COMMENT
+// ADD_BANDMATE
+// ADD_USER
+// LOGIN_USER
+>>>>>>> b316c868a15fa9bf95d352a4dd07f4e90360179f
