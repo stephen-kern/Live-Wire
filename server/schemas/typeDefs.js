@@ -7,7 +7,8 @@ const typeDefs = gql`
     username: String
     email: String
     reviewCount: Int
-    savedReview: [Review]
+    postReview: [Review]
+    bandmates: [User]
   }
 
   type Review {
@@ -16,13 +17,13 @@ const typeDefs = gql`
     location: String!
     reviewText: String
     createdAt: String 
-    reactionCount: Int
-    reactions: [Reaction]
+    commentCount: Int
+    comment: [Comment]
   }
 
-  type Reaction {
+  type Comment {
     _id: ID
-    reactionBody: String
+    commentBody: String
     createdAt: String
     username: String
   }
@@ -38,16 +39,18 @@ const typeDefs = gql`
 
   input reviewInput {
     reviewId: String!
-    band: String!
-    venue: String!
+    artist: String!
+    location: String!
     description: String    
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    savedReview(input: reviewInput): User
+    postReview(input: reviewInput): User
     removeReview(reviewId: String!): User
+    addComment(reviewId: ID!, commentBody: String!): Review
+    addBandmate(bandmateId: ID!): User
   }
 `;
 
