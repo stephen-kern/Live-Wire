@@ -38,15 +38,15 @@ const typeDefs = gql`
 
   input reviewInput {
     reviewId: String!
-    band: String!
-    venue: String!
+    artist: String!
+    location: String!
     description: String    
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    savedReview(input: reviewInput): User
+    postReview(input: reviewInput): User
     removeReview(reviewId: String!): User
   }
 `;

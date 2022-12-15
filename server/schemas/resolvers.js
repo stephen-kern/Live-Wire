@@ -40,28 +40,54 @@ const resolvers = {
 
       return { token, user };
     },
-    savedReview: async (parent, { input }, context) => {
+    postReview: async (parent, { input }, context) => {
       if (context.user) {
         const addSavedReview = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { savedReview: input } },
+          { $addToSet: { postReview: input } },
           { new: true }
         );
-        return addSavedReview;
+        return addPostReview;
       }
       throw new AuthenticationError("You need to be logged in!");
     },
     removeReview: async (parent, { reviewId }, context) => {
       if (context.user) {
-        const updatedSavedReview = await User.findOneAndUpdate(
+        const updatedPostReview = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedReview: { reviewId: reviewId } } },
+          { $pull: { postReview: { reviewId: reviewId } } },
           { new: true }
         );
-        return updatedSavedReview;
+        return updatedPostReview;
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+    addComment: async (parent, { commentId, commentBody }, context) => {
+      if (context.user) {
+        const updatedComment = await Thought.findOneAndUpdate(
+          { _id: commentId },
+          { $push: { comment: { commentBody, username: context.user.username } } },
+          { new: true, runValidators: true }
+        );
+
+        return updatedComment;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    addBandmate: async (parent, { bandmateId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { bandmate: bandmateId } },
+          { new: true }
+        ).populate('bandmates');
+
+        return updatedUser;
+      }
+      
+      throw new AuthenticationError('You need to be logged in!');
+    }
   },
 };
 
