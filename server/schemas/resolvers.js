@@ -8,12 +8,31 @@ const resolvers = {
     me: async (parent, args, context) => {
       // check if user exists
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).select(
-          "-__v -password"
-        );
+        const userData = await User.findOne({ _id: context.user._id })
+          .select("-__v -password")
+          .populate("reviews")
+          .populate("bandmates");
         return userData;
       }
       throw new AuthenticationError("Not logged in");
+    },
+    users: async () => {
+      return User.find()
+        .select("-__v -password")
+        .populate("reviews")
+        .populate("bandmates");
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username })
+      .select('-__v -password')
+      .populate('reviews')
+      .populate('bandmates')
+    },
+    reviews: async () => {
+      return Review.find().sort({ createdAt: -1 });
+    },
+    review: async (parent, { _id }) => {
+      return Review.findOne({ _id });
     },
   },
   // mutations of user data for web functionality, including: login, addUser, saveReview and RemoveReview
@@ -42,19 +61,18 @@ const resolvers = {
     },
     postReview: async (parent, args, context) => {
       if (context.user) {
-        const reviewText = await Review.create({ ...args, username: context.user.username });
-        const artist = await Review.create({ ...args, username: context.user.username });
-        const location = await Review.create({ ...args, username: context.user.username });
+        const review = await Review.create({ ...args, user: context.user._id });
+        // const reviewText = await Review.create({ ...args, username: context.user.username });
+        // const artist = await Review.create({ ...args, username: context.user.username });
+        // const location = await Review.create({ ...args, username: context.user.username });
 
         await User.findByIdAndUpdate(
-          { _id: context.user._id},
-          { $push: { reviewText: reviewText._id }},
-          { $push: { artist: artist._id }},
-          { $push: { location: location._id }},
+          { _id: context.user._id },
+          { $push: { reviews: review._id } },
           { new: true }
         );
 
-        return reviewText;
+        return review;
       }
       throw new AuthenticationError("You need to be logged in!");
     },
@@ -84,28 +102,32 @@ const resolvers = {
       if (context.user) {
         const updatedReview = await Review.findOneAndUpdate(
           { _id: reviewId },
-          { $push: { comment: { commentBody, username: context.user.username } } },
+          {
+            $push: {
+              comment: { commentBody, username: context.user.username },
+            },
+          },
           { new: true, runValidators: true }
         );
 
         return updatedReview;
       }
 
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
     addBandmate: async (parent, { bandmateId }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { bandmate: bandmateId } },
+          { $addToSet: { bandmates: bandmateId } },
           { new: true }
-        ).populate('bandmates');
+        ).populate("bandmates");
 
         return updatedUser;
       }
-      
-      throw new AuthenticationError('You need to be logged in!');
-    }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
   },
 };
 
