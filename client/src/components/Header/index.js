@@ -3,7 +3,6 @@ import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 
-
 const Header = () => {
   const logout = (event) => {
     event.preventDefault();
@@ -21,6 +20,7 @@ const Header = () => {
         <nav className="text-center">
           {Auth.loggedIn() ? (
             <>
+              <Link to="/compose">Compose</Link>
               <Link to="/profile">Profile</Link>
               <a href="/" onClick={logout}>
                 Logout
