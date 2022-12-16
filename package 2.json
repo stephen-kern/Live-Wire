@@ -1,0 +1,26 @@
+{
+  "name": "live-wire",
+  "description": "social media platform for music lovers to share their opinions on music, shows, artists, and more.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephen-kern/Live-Wire.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephen-kern/Live-Wire/issues"
+  },
+  "homepage": "https://github.com/stephen-kern/Live-Wire#readme"
+}
