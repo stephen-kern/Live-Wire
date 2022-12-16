@@ -25,8 +25,8 @@ export const ADD_USER = gql`
 `;
 
 export const POST_REVIEW = gql`
-  mutation addReview($input: reviewInput!) {
-    addReview(input: $input) {
+  mutation postReview($input: reviewInput!) {
+    postReview(input: $input) {
       reviewText
       createdAt
       username
