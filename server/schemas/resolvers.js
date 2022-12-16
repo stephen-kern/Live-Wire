@@ -46,15 +46,15 @@ const resolvers = {
         const artist = await Review.create({ ...args, username: context.user.username });
         const location = await Review.create({ ...args, username: context.user.username });
 
-        const addPostReview = User.findByIdAndUpdate(
+        await User.findByIdAndUpdate(
           { _id: context.user._id},
           { $push: { reviewText: reviewText._id }},
-          { $push: { artist: artist }},
-          { $push: { location: location }},
+          { $push: { artist: artist._id }},
+          { $push: { location: location._id }},
           { new: true }
         );
 
-        return addPostReview;
+        return reviewText;
       }
       throw new AuthenticationError("You need to be logged in!");
     },

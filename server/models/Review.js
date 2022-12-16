@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const reactionSchema = require('./Reaction');
+const commentSchema = require('./Comment');
 const dateFormat = require('../utils/dateFormat');
 
 const reviewSchema = new Schema(
@@ -27,7 +27,7 @@ const reviewSchema = new Schema(
             type: String,
             required: true
         },
-        reactions: [reactionSchema],
+        comments: [commentSchema],
     },
     {
         toJSON: {
@@ -38,7 +38,7 @@ const reviewSchema = new Schema(
     }
 );
 
-reviewSchema.virtual('reactionCount').get(function () {
+reviewSchema.virtual('commentCount').get(function () {
     return this.reactions.length;
 })
 
