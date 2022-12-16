@@ -5,13 +5,14 @@ import { POST_REVIEW } from "../utils/mutations";
 import { QUERY_REVIEW, QUERY_ME } from "../utils/queries";
 
 const Compose = () => {
-  const [formState, setFormState] = useState({
-    artist: '',
-    location: '',
-    reviewText: '',
-  });
-  const { artist, location, reviewText } = formState;
+  const [reviewTextState, setTextState] = useState("");
+  const [artistText, setArtist] = useState('');
+  const [locationText, setLocation] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
+
+  const { reviewText } = reviewTextState;
+  const { artist } = artistText;
+  const { location } = locationText;
 
   const [postReview, { error }] = useMutation(POST_REVIEW, {
     update(cache, { data: { postReview } }) {
@@ -35,10 +36,18 @@ const Compose = () => {
 
   const handleTextChange = (event) => {
     if (event.target.value.length <= 1250) {
-      setFormState(event.target.value);
+      setTextState(event.target.value);
       setCharacterCount(event.target.value.length);
     }
   };
+
+  const handleArtistChange = (event) => {
+    setArtist(event.target.value);
+  }
+
+  const handleLocationChange = (event) => {
+    setLocation(event.target.value);
+  }
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -48,7 +57,9 @@ const Compose = () => {
         variables: { reviewText, artist, location }
       });
 
-      setFormState("");
+      setTextState("");
+      setArtist('');
+      setLocation('');
       setCharacterCount(0);
     } catch (e) {
       console.log(e);
@@ -62,12 +73,12 @@ const Compose = () => {
           className="flex-row justify-center justify-space-between-md align-stretch"
           onSubmit={handleFormSubmit}
         >
-            <input className="artist-input" placeholder="Who's playing?" value={formState} onChange={handleTextChange} />
-            <input className="location-input" placeholder="Where at?" value={formState} onChange={handleTextChange} />
+            <input className="artist-input" placeholder="Who's playing?" value={artistText} onChange={handleArtistChange} />
+            <input className="location-input" placeholder="Where at?" value={locationText} onChange={handleLocationChange} />
 
           <textarea
             placeholder="Here's what I'm thinking"
-            value={formState}
+            value={reviewText}
             className="form-input col-12 col-md-9"
             onChange={handleTextChange}
           ></textarea>
