@@ -4,16 +4,18 @@ import { Navigate, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 
 // === File Imports ===
-// import { QUERY_USER, QUERY_ME } from "../utils/queries";
-// import { ADD_FRIEND } from "../utils/mutations";
-// import Auth from "../utils/auth";
+import { QUERY_USER, QUERY_ME } from "../utils/queries";
+import { ADD_BANDMATE } from "../utils/mutations";
+import Auth from "../utils/auth";
+import BandmatesList from "../components/BandmatesList";
+import ReviewList from "../components/ReviewList";
 
 const Profile = () => {
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
-  const [addFriend] = useMutation(ADD_FRIEND);
+  const [addBandmate] = useMutation(ADD_BANDMATE);
   const user = data?.me || data?.user || {};
 
   // navigate to personal profile page if username is the logged-in user's
@@ -33,36 +35,49 @@ const Profile = () => {
       </h4>
     );
   }
-//   return (
-//     <div>
-//       <div className="flex-row mb-3">
-//         <h2 className="bg-dark text-secondary p-3 display-inline-block">
-//           Viewing {userParam ? `${user.username}'s` : "your"} profile.
-//         </h2>
-//         {userParam && (
-//           <button className="btn ml-auto" onClick={handleClick}>
-//             Add Friend
-//           </button>
-//         )}
-//       </div>
 
-//       <div className="flex-row justify-space-between mb-3">
-//         <div className="col-12 mb-3 col-lg-8">
-//           <ThoughtList
-//             thoughts={user.thoughts}
-//             title={`${user.username}'s thoughts...`}
-//           />
-//         </div>
+  const handleClick = async () => {
+    try {
+      await addBandmate({
+        variables: { id: user._id },
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
-//         <div className="col-12 col-lg-3 mb-3">
-//           <FriendList
-//             username={user.username}
-//             friendCount={user.friendCount}
-//             friends={user.friends}
-//           />
-//         </div>
-//       </div>
-//       <div className="mb-3">{!userParam && <ThoughtForm />}</div>
-//     </div>
-//   );
+  return (
+    <div>
+      <div className="flex-row mb-3">
+        <h2 className="bg-dark text-secondary p-3 display-inline-block">
+          Viewing {userParam ? `${user.username}'s` : "your"} profile.
+        </h2>
+        {userParam && (
+          <button className="btn ml-auto" onClick={handleClick}>
+            Add Bandmate
+          </button>
+        )}
+      </div>
+
+      <div className="flex-row justify-space-between mb-3">
+        <div className="col-12 mb-3 col-lg-8">
+          <ReviewList
+            reviews={user.reviews}
+            title={`${user.username} left these reviews`}
+          />
+        </div>
+
+        <div className="col-12 col-lg-3 mb-3">
+          <BandmatesList
+            username={user.username}
+            bandmateCount={user.bandmateCount}
+            bandmates={user.bandmates}
+          />
+        </div>
+      </div>
+      {/* <div className="mb-3">{!userParam && <ThoughtForm />}</div> */}
+    </div>
+  );
 };
+
+export default Profile;

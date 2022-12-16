@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a9549e2abfff5ec8784c285886deefa8af032f19
 import { gql } from '@apollo/client';
 
 export const LOGIN = gql`
@@ -50,6 +53,7 @@ export const ADD_USER = gql`
     }
   }
 `;
+<<<<<<< HEAD
 =======
 // ADD_REVIEW
 // ADD_COMMENT
@@ -57,3 +61,5 @@ export const ADD_USER = gql`
 // ADD_USER
 // LOGIN_USER
 >>>>>>> b316c868a15fa9bf95d352a4dd07f4e90360179f
+=======
+>>>>>>> a9549e2abfff5ec8784c285886deefa8af032f19
