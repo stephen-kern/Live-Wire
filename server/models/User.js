@@ -27,7 +27,7 @@ const userSchema = new Schema({
         ref: 'Review',
     },
    ] ,
-  friends: [
+  bandmates: [
     {
         type: Schema.Types.ObjectId,
         ref: 'User',
@@ -50,8 +50,8 @@ userSchema.methods.isCorrectPassword = async function(password) {
   return await bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual('friendCount').get(function() {
-  return this.friends.length;
+userSchema.virtual('bandmateCount').get(function() {
+  return this.bandmates.length;
 });
 
 const User = mongoose.model('User', userSchema);
