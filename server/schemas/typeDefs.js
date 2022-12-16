@@ -39,6 +39,7 @@ const typeDefs = gql`
 
   input reviewInput {
     reviewId: String!
+    reviewText: String!
     artist: String!
     location: String!
     description: String    
@@ -47,7 +48,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    postReview(input: reviewInput): User
+    postReview(artist: String!, location: String!, reviewText: String!): User
     removeReview(reviewId: String!): User
     addComment(reviewId: ID!, commentBody: String!): Review
     addBandmate(bandmateId: ID!): User
