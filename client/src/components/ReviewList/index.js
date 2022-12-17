@@ -10,8 +10,8 @@ const ReviewList = ({ reviews, title }) => {
         <div>
             <h3>{title}</h3>
             {reviews && 
-                reviews.map(review => {
-                    <div key={review.id} className="card mb-3">
+                reviews.map(review => (
+                    <div key={review._id} className="card mb-3">
                         <p className='card-header'>
                             <Link
                                 to={`/profile/${review.username}`}
@@ -23,11 +23,14 @@ const ReviewList = ({ reviews, title }) => {
                                 Posted on {review.createdAt}
                         </p>
                         <div className='card-sub-head justify-space-between'>
-                            <p className='mb-0'>
+                            <h4 className='mb-0'>
                                 Artist: {review.artist}
-                            </p>
-                            <p className='mb-0'>
+                            </h4>
+                            <h4 className='mb-0'>
                                 Location: {review.location}
+                            </h4>
+                            <p className='mb-0'>
+                                {review.reviewText}
                             </p>
                         </div>
                         <div className='card-body'>
@@ -39,7 +42,7 @@ const ReviewList = ({ reviews, title }) => {
                             </Link>
                         </div>
                     </div>
-                })}
+                ))}
         </div>
     );
 };

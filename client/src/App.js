@@ -15,6 +15,7 @@ import Header from "./components/Header";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Compose from './pages/Compose';
+import Setlist from './pages/Setlist';
 
 
 const httpLink = createHttpLink({
@@ -48,6 +49,7 @@ function App() {
                 <Route path="login" element={<Login />} />
                 <Route path="signup" element={<Signup />} />
                 <Route path="compose" element={<Compose />} />
+                <Route path="setlist" element={<Setlist />} />
               </Routes>
             </div>
           </div>

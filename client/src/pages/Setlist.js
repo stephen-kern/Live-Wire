@@ -3,9 +3,15 @@ import ReviewList from '../components/ReviewList'
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
+import { QUERY_REVIEWS, QUERY_ME_BASIC } from '../utils/queries';
 
 const Setlist = () => {
     // logic here
+    const { loading, data } = useQuery(QUERY_REVIEWS);
+    const { data: userData } = useQuery(QUERY_ME_BASIC);
+    const reviews = data?.reviews || [];
+
+    const loggedIn = Auth.loggedIn();
 
 
     return (
@@ -24,4 +30,6 @@ const Setlist = () => {
             </div>
         </main>
     )
-}
+};
+
+export default Setlist;
