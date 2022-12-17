@@ -54,7 +54,11 @@ const Compose = () => {
 
     try {
       await postReview({
-        variables: { reviewText, artist, location }
+        variables: { 
+            reviewText, 
+            artist, 
+            location
+         }
       });
 
       setTextState("");
