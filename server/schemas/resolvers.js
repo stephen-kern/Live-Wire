@@ -62,10 +62,6 @@ const resolvers = {
     postReview: async (parent, args, context) => {
       if (context.user) {
         const review = await Review.create({ ...args, user: context.user._id });
-        // const reviewText = await Review.create({ ...args, username: context.user.username });
-        // const artist = await Review.create({ ...args, username: context.user.username });
-        // const location = await Review.create({ ...args, username: context.user.username });
-
         await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: { reviews: review._id } },
@@ -76,17 +72,6 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    // postReview: async (parent, { input }, context) => {
-    //   if (context.user) {
-    //     const addPostReview = await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $addToSet: { postReview: input } },
-    //       { new: true }
-    //     );
-    //     return addPostReview;
-    //   }
-    //   throw new AuthenticationError("You need to be logged in!");
-    // },
     removeReview: async (parent, { reviewId }, context) => {
       if (context.user) {
         const updatedPostReview = await User.findOneAndUpdate(

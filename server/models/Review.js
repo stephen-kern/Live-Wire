@@ -15,10 +15,6 @@ const reviewSchema = new Schema(
             default: Date.now,
             get: timestamp => dateFormat(timestamp)
         },
-        // username: {
-        //     type: String,
-        //     required: true
-        // },
         location: {
             type: String,
             required: true
@@ -39,7 +35,7 @@ const reviewSchema = new Schema(
 );
 
 reviewSchema.virtual('commentCount').get(function () {
-    return this.reactions.length;
+    return this.comments.length;
 })
 
 const Review = model('Review', reviewSchema);

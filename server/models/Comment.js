@@ -3,14 +3,10 @@ const dateFormat = require('../utils/dateFormat');
 
 const commentSchema = new Schema(
     {
-        commentId: {
-            type: Schema.Types.ObjectId,
-            default: () => new Types.ObjectId(),
-        },
         commentBody: {
             type: String,
             required: true,
-            max_length: 1250
+            maxlength: 1250
         },
         username: {
             type: String,
