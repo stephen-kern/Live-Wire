@@ -18,7 +18,7 @@ const typeDefs = gql`
     reviewText: String!
     createdAt: String
     commentCount: Int
-    comment: [Comment]
+    comments: [Comment]
   }
 
   type Comment {

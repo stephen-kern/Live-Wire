@@ -25,15 +25,14 @@ export const ADD_USER = gql`
 `;
 
 export const POST_REVIEW = gql`
-  mutation postReview($input: reviewInput!) {
-    postReview(input: $input) {
+  mutation postReview($artist: String!, $location: String!, $reviewText: String!) {
+    postReview(artist: $artist, location: $location, reviewText: $reviewText) {
       reviewText
       createdAt
-      username
       location
       artist
       commentCount
-      comment {
+      comments {
         _id
       }
     }
@@ -54,7 +53,7 @@ export const ADD_COMMENT = gql`
     addComment(reviewId: $reviewId, commentBody: $commentBody) {
       _id
       commentCount
-      comment {
+      comments {
         _id
         commentBody
         createdAt
