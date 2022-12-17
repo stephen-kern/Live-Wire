@@ -29,6 +29,21 @@ export const QUERY_ME = gql`
   }
 `;
 
+export const QUERY_ME_BASIC = gql`
+  {
+    me {
+      _id
+      username
+      email
+      bandmateCount
+      bandmates {
+        _id
+        username
+      }
+    }
+  }
+`;
+
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
@@ -36,19 +51,13 @@ export const QUERY_USER = gql`
       username
       email
       reviewCount
-      postReview {
+      reviews {
         _id
         createdAt
         reviewText
         artist
         location
-        username
-        comments {
-          _id
-          commentBody
-          username
-          createdAt
-        }
+        commentCount
       }
       bandmates {
         _id
@@ -57,6 +66,7 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
 // still need QUERY_REVIEW
 export const QUERY_REVIEW = gql`
   query review($id: ID!) {
@@ -67,6 +77,25 @@ export const QUERY_REVIEW = gql`
       username
       location
       artist
+      comments {
+        _id
+        createdAt
+        username
+        commentBody
+      }
+    }
+  }
+`;
+
+export const QUERY_REVIEWS = gql`
+  query reviews($username: String!) {
+    reviews(username: $username) {
+      _id
+      reviewText
+      createdAt
+      location
+      artist
+      username
       comments {
         _id
         createdAt
