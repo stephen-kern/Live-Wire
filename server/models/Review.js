@@ -1,46 +1,46 @@
 const { Schema, model } = require('mongoose');
-const reactionSchema = require('./Reaction');
+const commentSchema = require('./Comment');
 const dateFormat = require('../utils/dateFormat');
 
 const reviewSchema = new Schema(
-    {
-        reviewText: {
-            type: String,
-            required: true,
-            minlength: 1,
-            maxlength: 1250
-        },
-        createdAt: {
-            type: Date,
-            default: Date.now,
-            get: timestamp => dateFormat(timestamp)
-        },
-        username: {
-            type: String,
-            required: true
-        },
-        location: {
-            type: String,
-            required: true
-        },
-        artist: {
-            type: String,
-            required: true
-        },
-        reactions: [reactionSchema],
-    },
-    {
-        toJSON: {
-            getters: true,
-            virtuals: true,
-        },
-        id: false
-    }
+	{
+		reviewText: {
+			type: String,
+			required: true,
+			minlength: 1,
+			maxlength: 1250,
+		},
+		createdAt: {
+			type: Date,
+			default: Date.now,
+			get: (timestamp) => dateFormat(timestamp),
+		},
+		location: {
+			type: String,
+			required: true,
+		},
+		artist: {
+			type: String,
+			required: true,
+		},
+		username: {
+			type: String,
+			required: true,
+		},
+		comments: [commentSchema],
+	},
+	{
+		toJSON: {
+			getters: true,
+			virtuals: true,
+		},
+		id: false,
+	}
 );
 
-reviewSchema.virtual('reactionCount').get(function () {
-    return this.reactions.length;
-})
+reviewSchema.virtual('commentCount').get(function () {
+	return this.comments.length;
+});
 
 const Review = model('Review', reviewSchema);
 
