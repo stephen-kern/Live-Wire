@@ -18,6 +18,7 @@ import Compose from './pages/Compose';
 import Setlist from './pages/Setlist';
 import Mission from "./pages/Mission";
 
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
