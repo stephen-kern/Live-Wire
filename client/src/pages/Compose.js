@@ -36,17 +36,17 @@ const Compose = () => {
 
   const handleTextChange = (event) => {
     if (event.target.value.length <= 1250) {
-      setTextState(event.target.value);
+      setTextState({ [event.target.name]: event.target.value});
       setCharacterCount(event.target.value.length);
     }
   };
 
   const handleArtistChange = (event) => {
-    setArtist(event.target.value);
+    setArtist({ [event.target.name]: event.target.value});
   }
 
   const handleLocationChange = (event) => {
-    setLocation(event.target.value);
+    setLocation({ [event.target.name]: event.target.value});
   }
 
   const handleFormSubmit = async (event) => {
@@ -73,13 +73,14 @@ const Compose = () => {
           className="flex-row justify-center justify-space-between-md align-stretch"
           onSubmit={handleFormSubmit}
         >
-            <input className="artist-input" placeholder="Who's playing?" value={artistText} onChange={handleArtistChange} />
-            <input className="location-input" placeholder="Where at?" value={locationText} onChange={handleLocationChange} />
+            <input name="artist-input-name" className="artist-input" placeholder="Who's playing?" value={artistText} onChange={handleArtistChange} />
+            <input name="location-input-name" className="location-input" placeholder="Where at?" value={locationText} onChange={handleLocationChange} />
 
           <textarea
             placeholder="Here's what I'm thinking"
             value={reviewText}
             className="form-input col-12 col-md-9"
+            name="text-area-name"
             onChange={handleTextChange}
           ></textarea>
           <p
