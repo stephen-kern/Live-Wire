@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { useMutation } from "@apollo/client";
 import { POST_REVIEW } from "../utils/mutations";
-import { QUERY_REVIEWS, QUERY_ME } from "../utils/queries";
+import { QUERY_REVIEW, QUERY_ME } from "../utils/queries";
 
 const Compose = () => {
   const [reviewTextState, setTextState] = useState("");
@@ -14,7 +14,7 @@ const Compose = () => {
   const { artist } = artistText;
   const { location } = locationText;
 
-  const [postReviewText] = useMutation(POST_REVIEW, {
+  const [postReview, { error }] = useMutation(POST_REVIEW, {
     update(cache, { data: { postReview } }) {
       try {
         const { me } = cache.readQuery({ query: QUERY_ME });
@@ -26,51 +26,11 @@ const Compose = () => {
         console.warn("This is a warning!");
       }
 
-      const { reviewText } = cache.readQuery({ query: QUERY_REVIEWS });
+      const { reviews } = cache.readQuery({ query: QUERY_REVIEW });
       cache.writeQuery({
-        query: QUERY_REVIEWS,
-        data: { reviews: {reviewText: [postReview, ...reviewText]} },
+        query: QUERY_REVIEW,
+        data: { reviews: [postReview, ...reviews] },
       });
-    },
-  });
-
-  const [postReviewArtist] = useMutation(POST_REVIEW, {
-    update(cache, { data: { postReview } }) {
-        try {
-            const { me } = cache.readQuery({ query: QUERY_ME });
-            cache.writeQuery({
-                query: QUERY_ME, 
-                data: { me: { ...me, reviews: [...me.reviews, postReview] } },
-            });
-        } catch (e) {
-            console.warn('Why this warning')
-        }
-
-        const { reviewArtist } = cache.readQuery({ query: QUERY_REVIEWS });
-        cache.writeQuery({
-            query: QUERY_REVIEWS,
-            data: { reviews: { artist: [postReview, ...reviewArtist]}},
-        });
-    },
-  });
-
-  const [postReviewLocation] = useMutation(POST_REVIEW, {
-    update(cache, { data: { postReview } }) {
-        try {
-            const { me } = cache.readQuery({ query: QUERY_ME });
-            cache.writeQuery({
-                query: QUERY_ME, 
-                data: { me: { ...me, reviews: [...me.reviews, postReview] } },
-            });
-        } catch (e) {
-            console.warn('Why this warning')
-        }
-
-        const { reviewLocation } = cache.readQuery({ query: QUERY_REVIEWS });
-        cache.writeQuery({
-            query: QUERY_REVIEWS,
-            data: { reviews: { location: [postReview, ...reviewLocation]}},
-        });
     },
   });
 
@@ -93,22 +53,8 @@ const Compose = () => {
     event.preventDefault();
 
     try {
-      await postReviewText({
-        variables: { 
-            reviewText
-         }
-      });
-
-      await postReviewArtist({
-        variables: {
-            artist
-        }
-      });
-
-      await postReviewLocation({
-        variables: {
-            location
-        }
+      await postReview({
+        variables: { reviewText, artist, location }
       });
 
       setTextState("");
@@ -138,12 +84,11 @@ const Compose = () => {
           ></textarea>
           <p
           className={`m-0 ${
-            characterCount === 1250
-            //  || error ? "text-error" : ""
+            characterCount === 1250 || error ? "text-error" : ""
           }`}
         >
           Character Count: {characterCount}/1250
-          {/* {error && <span className="ml-2">Something went wrong...</span>} */}
+          {error && <span className="ml-2">Something went wrong...</span>}
         </p>
           <button className="btn col-12 col-md-3" type="submit">
             Submit
