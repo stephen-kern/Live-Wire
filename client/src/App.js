@@ -17,6 +17,7 @@ import Signup from "./pages/Signup";
 import Compose from './pages/Compose';
 import Setlist from './pages/Setlist';
 import Mission from "./pages/Mission";
+import SingleReview from "./pages/SingleReview";
 
 
 const httpLink = createHttpLink({
@@ -52,6 +53,7 @@ function App() {
                 <Route path="compose" element={<Compose />} />
                 <Route path="" element={<Setlist />} />
                 <Route path="mission" element={<Mission />} />
+                <Route path="/review/:id" element={<SingleReview />} />
               </Routes>
             </div>
           </div>
