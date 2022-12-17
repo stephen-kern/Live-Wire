@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 
+import ArtistInput from "../components/ArtistInput";
+import LocationInput from "../components/LocationInput";
+
 import { useMutation } from "@apollo/client";
 import { POST_REVIEW } from "../utils/mutations";
 import { QUERY_REVIEW, QUERY_ME } from "../utils/queries";
 
 const Compose = () => {
   const [reviewTextState, setTextState] = useState("");
-  const [artistText, setArtist] = useState('');
   const [locationText, setLocation] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
   const { reviewText } = reviewTextState;
-  const { artist } = artistText;
+
   const { location } = locationText;
 
   const [postReview, { error }] = useMutation(POST_REVIEW, {
@@ -41,25 +43,15 @@ const Compose = () => {
     }
   };
 
-  const handleArtistChange = (event) => {
-    setArtist({ [event.target.name]: event.target.value});
-  }
-
-  const handleLocationChange = (event) => {
-    setLocation({ [event.target.name]: event.target.value});
-  }
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
       await postReview({
-        variables: { reviewText, artist, location }
+        variables: { reviewText }
       });
 
       setTextState("");
-      setArtist('');
-      setLocation('');
       setCharacterCount(0);
     } catch (e) {
       console.log(e);
@@ -73,8 +65,8 @@ const Compose = () => {
           className="flex-row justify-center justify-space-between-md align-stretch"
           onSubmit={handleFormSubmit}
         >
-            <input name="artist-input-name" className="artist-input" placeholder="Who's playing?" value={artistText} onChange={handleArtistChange} />
-            <input name="location-input-name" className="location-input" placeholder="Where at?" value={locationText} onChange={handleLocationChange} />
+            <ArtistInput />
+            <LocationInput />
 
           <textarea
             placeholder="Here's what I'm thinking"
