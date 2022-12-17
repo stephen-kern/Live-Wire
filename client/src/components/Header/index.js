@@ -13,14 +13,14 @@ const Header = () => {
     <>
     <header className="m-4 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <Link to="/">
+        <Link to="/mission">
           <h1 className="mb-0 h1"> Live Wire </h1>
         </Link>
 
         <nav className="text-center">
           {Auth.loggedIn() ? (
             <>
-              <Link to="/setlist">Setlist</Link>
+              <Link to="/">Setlist</Link>
               <Link to="/compose">Compose</Link>
               <Link to="/profile">Profile</Link>
               <a href="/" onClick={logout}>
@@ -39,12 +39,6 @@ const Header = () => {
     <div className="container">
       <div className="card">
         <h3>Welcome to Live Wire!</h3>
-      </div>
-      <div>
-        <p>
-            Live Wire is a social media platform for music lovers! As a user you are able to sign up
-            and create "Reviews" of your favorite tracks, records, artists, shows, and more. Add Bandmates, see others revies, and engage in discussions!
-        </p>
       </div>
     </div>
     </>

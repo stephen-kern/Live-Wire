@@ -16,7 +16,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Compose from './pages/Compose';
 import Setlist from './pages/Setlist';
-
+import Mission from "./pages/Mission";
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -49,7 +49,8 @@ function App() {
                 <Route path="login" element={<Login />} />
                 <Route path="signup" element={<Signup />} />
                 <Route path="compose" element={<Compose />} />
-                <Route path="setlist" element={<Setlist />} />
+                <Route path="" element={<Setlist />} />
+                <Route path="mission" element={<Mission />} />
               </Routes>
             </div>
           </div>
