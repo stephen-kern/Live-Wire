@@ -14,7 +14,7 @@ export const QUERY_ME = gql`
         location
         reviewText
         commentCount
-        comment {
+        comments {
           _id
           createdAt
           commentBody
@@ -88,7 +88,7 @@ export const QUERY_REVIEW = gql`
 `;
 
 export const QUERY_REVIEWS = gql`
-  query reviews($username: String!) {
+  query reviews($username: String) {
     reviews(username: $username) {
       _id
       reviewText
@@ -105,4 +105,5 @@ export const QUERY_REVIEWS = gql`
     }
   }
 `;
+
 
