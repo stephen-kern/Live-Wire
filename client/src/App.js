@@ -10,6 +10,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 // === Component Imports ===
 import HeaderComponent from "./components/Header";
+import FooterComponent from "./components/Footer";
 // === Page Imports ===
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -54,6 +55,7 @@ function App() {
                 <Route path="/review/:id" element={<SingleReview />} />
               </Routes>
             </div>
+            <FooterComponent />
           </div>
         </Router>
     </ApolloProvider>
