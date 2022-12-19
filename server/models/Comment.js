@@ -1,5 +1,7 @@
 const {Schema, Types } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
+const likeSchema = require('./Like')
+const dislikeSchema = require('./Dislike');
 
 const commentSchema = new Schema(
     {

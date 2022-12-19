@@ -1,5 +1,7 @@
 const { Schema, model } = require('mongoose');
 const commentSchema = require('./Comment');
+const likeSchema = require('./Like')
+const dislikeSchema = require('./Dislike');
 const dateFormat = require('../utils/dateFormat');
 
 const reviewSchema = new Schema(
@@ -28,6 +30,10 @@ const reviewSchema = new Schema(
 			required: true,
 		},
 		comments: [commentSchema],
+		likes: {
+			type: Number,
+			required: false,
+		}
 	},
 	{
 		toJSON: {

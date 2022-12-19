@@ -1,7 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaRegThumbsDown, FaHandRock } from 'react-icons/fa';
 
 const ReviewList = ({ reviews, title }) => {
+    const [likeCount, setLikeCount] = useState(0);
+    const [dislikeCount, setDislikeCount] = useState(0);
+
+    const [activeBtn, setActiveBtn] = useState('none');
+
+    const handleLikeClick = () => {
+        if (activeBtn === "none") {
+          setLikeCount(likeCount + 1);
+          setActiveBtn("like");
+          return;
+        }
+     
+        if (activeBtn === 'like'){
+          setLikeCount(likeCount - 1);
+          setActiveBtn("none");
+          return;
+        }
+     
+        if (activeBtn === "dislike") {
+          setLikeCount(likeCount + 1);
+          setDislikeCount(dislikeCount - 1);
+          setActiveBtn("like");
+        }
+      };
+
+      const handleDislikeClick = () => {
+        if (activeBtn === "none") {
+          setDislikeCount(dislikeCount + 1);
+          setActiveBtn("dislike");
+          return;
+        }
+       
+        if (activeBtn === 'dislike'){
+          setDislikeCount(dislikeCount - 1);
+          setActiveBtn("none");
+          return;
+        }
+     
+        if (activeBtn === "like") {
+          setDislikeCount(dislikeCount + 1);
+          setLikeCount(likeCount - 1);
+          setActiveBtn("dislike");
+        }
+      };
+
     if (!reviews.length) {
         return <h4>Nobody's jamming yet.</h4>
     }
@@ -32,6 +78,24 @@ const ReviewList = ({ reviews, title }) => {
                             <p className='mb-0'>
                                 {review.reviewText}
                             </p>
+                        </div>
+                        <div className='like-container'>
+                            <div className='btn-container'>
+                                <button 
+                                className={`btn ${activeBtn === "like" ? "like-active" : ""}`}
+                                onClick={handleLikeClick}
+                                >
+                                    <span className='thumbs-up-here'><FaHandRock /></span>
+                                    {likeCount}
+                                </button>
+                                <button 
+                                className={`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`}
+                                onClick={handleDislikeClick}
+                                >
+                                    <span className='thumbs-down-here'><FaRegThumbsDown /></span>
+                                    {dislikeCount}
+                                </button>
+                            </div>
                         </div>
                         <div className='card-body'>
                             <Link to={`/review/${review._id}`}>

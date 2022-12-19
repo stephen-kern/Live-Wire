@@ -125,6 +125,23 @@ a {
   font-size: 2.5rem;
 }
 
+.btn-container {
+  display: flex;
+  flex-direction: 'row';
+  align-items: center;
+  background-color: #fff;
+  padding: 30px 50px;
+  border-radius: 12px;
+}
+
+.like-active {
+  background-color: #FF0063;
+}
+ 
+.dislike-active {
+  background-color: #394350;
+}
+
 .btn,
 .pill {
   font-size: 1.3rem;

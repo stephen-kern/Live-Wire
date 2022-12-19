@@ -74,6 +74,8 @@ const Compose = () => {
             className="flex-row justify-center justify-space-between-md align-stretch"
             onSubmit={handleFormSubmit}
           >
+            <div>
+              <p>Artist</p>
             <input
               name="artistText"
               className="artist-input"
@@ -89,7 +91,7 @@ const Compose = () => {
               value={formState.locationText}
               onChange={handleChange}
             />
-
+            </div>
             <textarea
               placeholder="Here's what I'm thinking"
               value={formState.reviewText}

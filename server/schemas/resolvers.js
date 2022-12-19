@@ -117,6 +117,16 @@ const resolvers = {
 
 			throw new AuthenticationError('You need to be logged in!');
 		},
+		likeReview: async (parent, { reviewId }, context) => {
+			if (context.user) {
+				const updatedReview = await Review.findOneAndUpdate(
+					{_id: reviewId},
+					{ $push: {likes: what here?}},
+					{ new: true}
+
+				)
+			}
+		}
 	},
 };
 
