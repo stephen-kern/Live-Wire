@@ -13,8 +13,13 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
+//added cors package require
+const cors = require('cors');
+
 const app = express();
 
+//add app.use for cors
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -39,6 +44,11 @@ const startApolloServer = async (typeDefs, resolvers) => {
     })
   })
   };
-  
+
+  //not sure if this conflicts with 40-45 above but sets up backend to listed at port 5000
+app.listen(5000, () => {
+  console.log("Back End listening on port 5000...");
+})
+
   // Call the async function to start the server
   startApolloServer(typeDefs, resolvers);

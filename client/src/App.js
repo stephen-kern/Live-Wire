@@ -11,6 +11,8 @@ import { setContext } from "@apollo/client/link/context";
 // === Component Imports ===
 import HeaderComponent from "./components/Header";
 import FooterComponent from "./components/Footer";
+//import Stripe
+import StripeComponent from "./components/Stripe";  //still need to add to app() below......
 // === Page Imports ===
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -20,6 +22,7 @@ import Mission from "./pages/Mission";
 import SingleReview from "./pages/SingleReview";
 import Profile from "./pages/Profile";
 import Bandmates from "./pages/Bandmates";
+
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -61,7 +64,7 @@ function App() {
               <Route
                 path="/profile/bandmates/:username"
                 element={<Bandmates />}
-              />
+              />              
             </Routes>
           </div>
         </div>
@@ -69,5 +72,7 @@ function App() {
     </ApolloProvider>
   );
 }
+
+
 
 export default App;
