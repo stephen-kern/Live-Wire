@@ -5,19 +5,22 @@ const CommentList = ({ comments }) => {
   return (
     <div className="card mb-3">
       <div className="card-header">
-        <span className="">Comments</span>
+        <h6 className="">Comments:</h6>
       </div>
       <div className="card-body">
         {comments &&
           comments.map((comment) => (
-            <p className="pill mb-3" key={comment._id}>
+            <p className="pill mb-3 flex-column" key={comment._id}>
               {comment.commentBody}{" "}
-              <Link
-                to={`/profile/${comment.username}`}
-                style={{ fontWeight: 700 }}
-              >
-                {comment.username} on {comment.createdAt}
-              </Link>
+              <div className="flex-row justify-space-between m-1">
+                <Link
+                  to={`/profile/${comment.username}`}
+                  style={{ fontWeight: 700 }}
+                >
+                  {comment.username}
+                </Link>
+                {comment.createdAt}
+              </div>
             </p>
           ))}
       </div>

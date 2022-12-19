@@ -213,6 +213,14 @@ a {
   width: 92%;
 }
 
+.text-container {
+  background-color: var(--dark);
+  border-radius: var(--border-radius);
+  width: 90%;
+  color: #FFF;
+  margin: 2%;
+}
+
 /* DISPLAY */
 .display-none {
   display: none;

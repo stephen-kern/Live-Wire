@@ -22,7 +22,7 @@ const SingleReview = (props) => {
   }
 
   return (
-    <div>
+    <div className="mt-3">
       <div className="card mb-3">
         <p className="card-header">
           <span style={{ fontWeight: 700 }} className="">
@@ -30,17 +30,18 @@ const SingleReview = (props) => {
           </span>{" "}
           Posted on {review.createdAt}
         </p>
-        <div className="card-tags">
+        <div className="card-tags flex-row justify-space-between m-2">
           <h4>Artist: {review.artist}</h4>
           <h4>Location: {review.location}</h4>
         </div>
-        <div className="card-body">
+        <div className="text-container mx-auto p-1">
           <p>{review.reviewText}</p>
         </div>
       </div>
+      {Auth.loggedIn() && <CommentForm reviewId={review._id} />}
+
       {review.comments.length > 0 && <CommentList comments={review.comments} />}
 
-      {Auth.loggedIn() && <CommentForm reviewId={review._id} />}
     </div>
   );
 };
