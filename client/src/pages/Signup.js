@@ -39,7 +39,7 @@ const Signup = () => {
 
 
   return (
-    <main className="main-cont">
+    <main className="main-cont mt-3">
       <div className="card-cont">
         <div className="card">
           <h4 className="card-header">Sign Up</h4>
@@ -49,7 +49,7 @@ const Signup = () => {
             >
               <input
                 className="form-input"
-                placeholder="Your username"
+                placeholder="Username"
                 name="username"
                 type="username"
                 id="username"
@@ -58,7 +58,7 @@ const Signup = () => {
               />
               <input
                 className="form-input"
-                placeholder="Your email"
+                placeholder="Email"
                 name="email"
                 type="email"
                 id="email"
@@ -67,7 +67,7 @@ const Signup = () => {
               />
               <input
                 className="form-input"
-                placeholder="******"
+                placeholder="Password"
                 name="password"
                 type="password"
                 id="password"

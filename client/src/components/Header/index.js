@@ -14,7 +14,6 @@ const HeaderComponent = () => {
 
   return (
     <>
-      <Layout>
         <Header className="nav">
           <div>
             <Link to="/mission">
@@ -42,14 +41,13 @@ const HeaderComponent = () => {
                 <Link to="/login" className="nav-links">
                   Login
                 </Link>
-                <Link to="/signup" className="nav-links">
+                <Link to="/signup" className="nav-links alt-btn">
                   Signup
                 </Link>
               </>
             )}
           </div>
         </Header>
-      </Layout>
     </>
   );
 };
