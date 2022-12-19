@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
 
-import CommentList from '../components/CommentList';
+import CommentList from '../components/CommentList'
 import CommentForm from '../components/CommentForm';
 
 import Auth from "../utils/auth";
@@ -39,7 +39,7 @@ const SingleReview = (props) => {
                 </div>
             </div>
             {review.commentCount > 0 && (
-                <CommentList reactions={review.comments} />
+                <CommentList comments={review.comments} />
             )}
 
             {Auth.loggedIn() && <CommentForm reviewId={review._id} />}
@@ -48,3 +48,5 @@ const SingleReview = (props) => {
 };
 
 export default SingleReview;
+
+// What is problem

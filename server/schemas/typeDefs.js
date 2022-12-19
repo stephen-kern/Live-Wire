@@ -40,7 +40,7 @@ const typeDefs = gql`
 		user(username: String!): User
 		reviews(username: String): [Review]
 		review(_id: ID): Review
-		comment: Comment
+		comments: Comment
 	}
 
 	input reviewInput {
