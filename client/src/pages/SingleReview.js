@@ -39,7 +39,7 @@ const SingleReview = (props) => {
                 </div>
             </div>
             {review.commentCount > 0 && (
-                <CommentList reactions={review.comments} />
+                <CommentList comments={review.comments} />
             )}
 
             {Auth.loggedIn() && <CommentForm reviewId={review._id} />}
