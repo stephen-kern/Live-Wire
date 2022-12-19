@@ -14,12 +14,7 @@ const Bandmates = () => {
   });
 
   const user = data?.me || data?.user || {};
-
-   // navigate to personal profile page if username is the logged-in user's
-   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/profile" />;
-  }
-
+  
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -41,7 +36,7 @@ const Bandmates = () => {
       </h5>
       {user.bandmates.map((bandmate) => (
         <button className="btn w-100 display-block mb-2" key={bandmate._id}>
-          <Link to={`/profile/${bandmate.username}`}>{bandmate.username}</Link>
+          <Link to={`/profile/${bandmate.username}`}>{bandmate.username}'s</Link>
         </button>
       ))}
     </div>
