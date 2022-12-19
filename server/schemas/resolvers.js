@@ -93,7 +93,7 @@ const resolvers = {
 					{ _id: reviewId },
 					{
 						$push: {
-							comment: { commentBody, username: context.user.username },
+							comments: { commentBody, username: context.user.username },
 						},
 					},
 					{ new: true, runValidators: true }
