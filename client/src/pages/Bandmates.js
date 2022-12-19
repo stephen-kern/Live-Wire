@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams, Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
@@ -17,7 +17,7 @@ const Bandmates = () => {
 
    // navigate to personal profile page if username is the logged-in user's
    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/profile/user/:id/bandmates" />;
+    return <Navigate to="/profile" />;
   }
 
   if (loading) {
@@ -35,7 +35,16 @@ const Bandmates = () => {
 
   return (
     <div>
-      <BandmatesList />
+      <div>
+      <h5>
+        {user.username}'s {user.bandmateCount} {user.bandmateCount === 1 ? "Bandmate" : "Bandmates"}
+      </h5>
+      {user.bandmates.map((bandmate) => (
+        <button className="btn w-100 display-block mb-2" key={bandmate._id}>
+          <Link to={`/profile/${bandmate.username}`}>{bandmate.username}</Link>
+        </button>
+      ))}
+    </div>
     </div>
   );
 };
