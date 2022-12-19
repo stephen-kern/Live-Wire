@@ -21,7 +21,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.8.0",
     "save": "^2.9.0",
-    "stripe": "^11.3.0",
+    "stripe": "^11.4.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
