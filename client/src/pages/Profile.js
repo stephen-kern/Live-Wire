@@ -69,7 +69,7 @@ const Profile = () => {
         </div>
 
         <div className="col-12 col-lg-3 mb-3">
-          <Link to={"/profile/bandmates"}>
+          <Link to={`/profile/bandmates/${user.username}`}>
             <h3>{user.username}'s Bandmates: {user.bandmateCount}</h3>
           </Link>
           <BandmatesList
