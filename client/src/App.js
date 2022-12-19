@@ -6,30 +6,29 @@ import {
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 // === Component Imports ===
 import HeaderComponent from "./components/Header";
 import FooterComponent from "./components/Footer";
 // === Page Imports ===
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Compose from './pages/Compose';
-import Setlist from './pages/Setlist';
+import Compose from "./pages/Compose";
+import Setlist from "./pages/Setlist";
 import Mission from "./pages/Mission";
 import SingleReview from "./pages/SingleReview";
 
-
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -42,22 +41,20 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-        <Router>
-          <div>
-            <HeaderComponent />
-            <div className="container">
-              <Routes>
-                <Route path="login" element={<Login />} />
-                <Route path="signup" element={<Signup />} />
-                <Route path="compose" element={<Compose />} />
-                <Route path="" element={<Setlist />} />
-                <Route path="mission" element={<Mission />} />
-                <Route path="/review/:id" element={<SingleReview />} />
-              </Routes>
-            </div>
-            <FooterComponent />
+      <Router>
+          <HeaderComponent />
+          <div className="container">
+            <Routes>
+              <Route path="login" element={<Login />} />
+              <Route path="signup" element={<Signup />} />
+              <Route path="compose" element={<Compose />} />
+              <Route path="" element={<Setlist />} />
+              <Route path="mission" element={<Mission />} />
+              <Route path="/review/:id" element={<SingleReview />} />
+            </Routes>
           </div>
-        </Router>
+          <FooterComponent />
+      </Router>
     </ApolloProvider>
   );
 }
