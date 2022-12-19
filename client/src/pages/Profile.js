@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import { ADD_BANDMATE } from "../utils/mutations";
 import Auth from "../utils/auth";
-import BandmatesList from "../components/BandmatesList";
 import ReviewList from "../components/ReviewList";
 
 const Profile = () => {
@@ -72,14 +71,8 @@ const Profile = () => {
           <Link to={`/profile/bandmates/${user.username}`}>
             <h3>{user.username}'s Bandmates: {user.bandmateCount}</h3>
           </Link>
-          <BandmatesList
-            username={user.username}
-            bandmateCount={user.bandmateCount}
-            bandmates={user.bandmates}
-          />
         </div>
       </div>
-      {/* <div className="mb-3">{!userParam && <ThoughtForm />}</div> */}
     </div>
   );
 };
