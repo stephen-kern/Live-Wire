@@ -221,6 +221,11 @@ a {
   margin: 2%;
 }
 
+.profile-title-container {
+  border-radius: var(--border-radius);
+  align-items: center;
+}
+
 /* DISPLAY */
 .display-none {
   display: none;
