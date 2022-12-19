@@ -111,6 +111,9 @@ a {
   opacity: 0.8;
 }
 
+.ghlogo{
+  color: var(--dark);
+}
 
 .page-title {
   text-align: center;
