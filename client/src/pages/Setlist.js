@@ -15,11 +15,11 @@ const Setlist = () => {
   const loggedIn = Auth.loggedIn();
 
   return (
-    <main>
+    <div className="col-12 mb-3">
       {Auth.loggedIn() ? (
         <div className="container">
           <div className="flex-row justify-space-between">
-            <div className={`col-12 mb-3 ${loggedIn && "col-lg-8"}`}>
+            <div className="w-75">
               {loading ? (
                 <div>Loading...</div>
               ) : (
@@ -36,7 +36,7 @@ const Setlist = () => {
             <div className="mission-cont">
              <Mission />
             </div>
-          <div className={`col-12 mb-3 ${loggedIn && "col-lg-8"}`}>
+          <div className={`col-12 mb-3`}>
             {loading ? (
               <div>Loading...</div>
             ) : (
@@ -48,7 +48,7 @@ const Setlist = () => {
           </div>
         </div>
       )}
-    </main>
+    </div>
   );
 };
 

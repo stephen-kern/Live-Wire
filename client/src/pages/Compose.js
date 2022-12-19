@@ -74,6 +74,8 @@ const Compose = () => {
             className="flex-row justify-center justify-space-between-md align-stretch"
             onSubmit={handleFormSubmit}
           >
+            <div>
+              <h5> Artist: </h5>
             <input
               name="artistText"
               className="artist-input"
@@ -81,7 +83,9 @@ const Compose = () => {
               value={formState.artistText}
               onChange={handleChange}
             />
-
+            </div>
+            <div>
+              <h5> Venue: </h5>
             <input
               name="locationText"
               className="location-input"
@@ -89,7 +93,9 @@ const Compose = () => {
               value={formState.locationText}
               onChange={handleChange}
             />
-
+            </div>
+            <div>
+            <h5>Message:</h5>
             <textarea
               placeholder="Here's what I'm thinking"
               value={formState.reviewText}
@@ -105,6 +111,7 @@ const Compose = () => {
               Character Count: {characterCount}/1250
               {error && <span className="ml-2">Something went wrong...</span>}
             </p>
+            </div>
             <button className="btn col-12 col-md-3" type="submit">
               Submit
             </button>

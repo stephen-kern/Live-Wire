@@ -6,7 +6,10 @@ import { Link } from "react-router-dom";
 
 const { Header } = Layout;
 
-const HeaderComponent = () => {
+const HeaderComponent = (props) => {
+
+  const { currentTab, handleTabChange } = props;
+
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
@@ -24,13 +27,13 @@ const HeaderComponent = () => {
           <div className="nav-links-container">
             {Auth.loggedIn() ? (
               <>
-                <Link to="/" className="nav-links">
+                <Link to="/" className={currentTab === "Setlist" ? "nav-link-active" : "nav-links"} onClick={() => handleTabChange("Setlist")}>
                   Setlist
                 </Link>
-                <Link to="/compose" className="nav-links">
+                <Link to="/compose" className={currentTab === "Compose" ? "nav-link-active" : "nav-links"} onClick={() => handleTabChange("Compose")}>
                   Compose
                 </Link>
-                <Link to="/profile" className="nav-links">
+                <Link to="/profile" className={currentTab === "Profile" ? "nav-link-active" : "nav-links"} onClick={() => handleTabChange("Profile")}>
                   Profile
                 </Link>
                 <a href="/" className="nav-links" onClick={logout}>
