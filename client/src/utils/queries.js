@@ -21,6 +21,7 @@ export const QUERY_ME = gql`
           username
         }
       }
+      bandmateCount
       bandmates {
         _id
         username
@@ -59,6 +60,7 @@ export const QUERY_USER = gql`
         location
         commentCount
       }
+      bandmateCount
       bandmates {
         _id
         username
@@ -105,5 +107,3 @@ export const QUERY_REVIEWS = gql`
     }
   }
 `;
-
-
