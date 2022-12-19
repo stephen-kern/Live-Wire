@@ -32,6 +32,9 @@ body {
   line-height: 1.5;
   font-size: 1.125rem;
   color: var(--dark);
+}
+
+.app{
   background-color: var(--background);
   display: flex;
   flex-direction: column;
@@ -248,6 +251,7 @@ a {
 
 /* LAYOUT */
 .container {
+  flex-grow: 1;
   width: 95%;
   max-width: 1200px;
   margin-left: auto;
