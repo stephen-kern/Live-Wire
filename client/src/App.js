@@ -56,7 +56,7 @@ function App() {
                 <Route path="/mission" element={<Mission />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/review/:id" element={<SingleReview />} />
-                <Route path="/profile/bandmates" element={<Bandmates />} />
+                <Route path="/profile/user/:id/bandmates" element={<Bandmates />} />
               </Routes>
             </div>
           </div>
