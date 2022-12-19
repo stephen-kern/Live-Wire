@@ -28,14 +28,13 @@ const Bandmates = () => {
   return (
     <div>
       <div>
-      <h5>
-        {user.username}'s {user.bandmateCount} {user.bandmateCount === 1 ? "Bandmate" : "Bandmates"}
+      <h5 className="m-3">
+        {user.username}'s {user.bandmateCount} {user.bandmateCount === 1 ? "Bandmate" : "Bandmates"}:
       </h5>
-      <div>
+      <div className="flex-row col-12 justify-space-around">
       {user.bandmates.map((bandmate) => (
-        <button className="btn w-50 display-block mb-2" key={bandmate._id}>
+        <button className="btn w-35 display-block mb-2" key={bandmate._id}>
           <Link to={`/profile/${bandmate.username}`}>{bandmate.username}</Link>
-          Bandmates: {bandmate.bandmateCount}
         </button>
       ))}
       </div>
