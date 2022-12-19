@@ -17,6 +17,8 @@ import Compose from './pages/Compose';
 import Setlist from './pages/Setlist';
 import Mission from "./pages/Mission";
 import SingleReview from "./pages/SingleReview";
+import Profile from './pages/Profile';
+import Bandmates from "./pages/Bandmates";
 
 
 const httpLink = createHttpLink({
@@ -46,12 +48,14 @@ function App() {
             <HeaderComponent />
             <div className="container">
               <Routes>
-                <Route path="login" element={<Login />} />
-                <Route path="signup" element={<Signup />} />
-                <Route path="compose" element={<Compose />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/compose" element={<Compose />} />
                 <Route path="" element={<Setlist />} />
-                <Route path="mission" element={<Mission />} />
+                <Route path="/mission" element={<Mission />} />
+                <Route path="/profile" element={<Profile />} />
                 <Route path="/review/:id" element={<SingleReview />} />
+                <Route path="/profile/bandmates" element={<Bandmates />} />
               </Routes>
             </div>
           </div>

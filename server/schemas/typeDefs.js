@@ -8,6 +8,7 @@ const typeDefs = gql`
 		email: String
 		reviewCount: Int
 		reviews: [Review]
+		bandmateCount: Int
 		bandmates: [User]
 	}
 

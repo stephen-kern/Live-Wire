@@ -2,6 +2,7 @@
 import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
+import { Link } from 'react-router-dom';
 
 // === File Imports ===
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
@@ -68,6 +69,9 @@ const Profile = () => {
         </div>
 
         <div className="col-12 col-lg-3 mb-3">
+          <Link to={"/profile/bandmates"}>
+            <h3>{user.username}'s Bandmates: {user.bandmateCount}</h3>
+          </Link>
           <BandmatesList
             username={user.username}
             bandmateCount={user.bandmateCount}
