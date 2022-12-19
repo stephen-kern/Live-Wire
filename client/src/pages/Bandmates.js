@@ -1,11 +1,8 @@
 import React from "react";
-import { Navigate, useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
-import Auth from "../utils/auth";
-
-import BandmatesList from "../components/BandmatesList";
 
 const Bandmates = () => {
   const { username: userParam } = useParams();
@@ -14,7 +11,7 @@ const Bandmates = () => {
   });
 
   const user = data?.me || data?.user || {};
-  
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -34,11 +31,14 @@ const Bandmates = () => {
       <h5>
         {user.username}'s {user.bandmateCount} {user.bandmateCount === 1 ? "Bandmate" : "Bandmates"}
       </h5>
+      <div>
       {user.bandmates.map((bandmate) => (
-        <button className="btn w-100 display-block mb-2" key={bandmate._id}>
-          <Link to={`/profile/${bandmate.username}`}>{bandmate.username}'s</Link>
+        <button className="btn w-50 display-block mb-2" key={bandmate._id}>
+          <Link to={`/profile/${bandmate.username}`}>{bandmate.username}</Link>
+          Bandmates: {bandmate.bandmateCount}
         </button>
       ))}
+      </div>
     </div>
     </div>
   );

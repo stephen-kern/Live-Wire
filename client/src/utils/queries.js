@@ -25,6 +25,8 @@ export const QUERY_ME = gql`
       bandmates {
         _id
         username
+        reviewCount
+        bandmateCount
       }
     }
   }
@@ -64,6 +66,8 @@ export const QUERY_USER = gql`
       bandmates {
         _id
         username
+        reviewCount
+        bandmateCount
       }
     }
   }
