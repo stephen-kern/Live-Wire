@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
 
-import CommentList from '../components/CommentList';
+import CommentList from '../components/CommentList'
 import CommentForm from '../components/CommentForm';
 
 import Auth from "../utils/auth";
@@ -48,3 +48,5 @@ const SingleReview = (props) => {
 };
 
 export default SingleReview;
+
+// What is problem
