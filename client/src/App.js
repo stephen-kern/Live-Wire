@@ -8,6 +8,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import { Layout } from "antd";
 // === Component Imports ===
 import HeaderComponent from "./components/Header";
 import FooterComponent from "./components/Footer";
@@ -43,7 +44,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="app">
+      <Layout className="app">
         <Router>
           <HeaderComponent />
           <div className="container">
@@ -66,7 +67,7 @@ function App() {
           </div>
           <FooterComponent />
         </Router>
-      </div>
+      </Layout>
     </ApolloProvider>
   );
 }
