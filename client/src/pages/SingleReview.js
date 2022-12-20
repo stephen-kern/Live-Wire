@@ -1,25 +1,32 @@
+// === PACKAGE IMPORTS ===
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import CommentList from "../components/CommentList";
-import CommentForm from "../components/CommentForm";
-import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
-import { QUERY_REVIEW } from "../utils/queries";
 import { FaMicrophone, FaMapMarkerAlt } from "react-icons/fa";
 
-const SingleReview = (props) => {
-  const { id: reviewId } = useParams();
+// === FILE IMPORTS ===
+import CommentList from "../components/CommentList";
+import CommentForm from "../components/CommentForm";
+import { QUERY_REVIEW } from "../utils/queries";
+import Auth from "../utils/auth";
 
+// Single Review Page functionality and JSX
+const SingleReview = (props) => {
+  // Assign Id to individual Review _id
+  const { id: reviewId } = useParams();
+  // Query review and assign variable ID
   const { loading, data } = useQuery(QUERY_REVIEW, {
     variables: { id: reviewId },
   });
-
+  // Assign review variable to data returned from Query
   const review = data?.review || {};
 
+  // If Loading, display this
   if (loading) {
     return <div>Loading...</div>;
   }
 
+  // Dynamically generated JSX returned
   return (
     <div className="mt-3">
       <div className="card mb-3 btn-shadow">
@@ -36,8 +43,12 @@ const SingleReview = (props) => {
           <p>Posted on {review.createdAt}</p>
         </div>
         <div className="card-tags flex-row justify-space-between m-2">
-          <h4><FaMicrophone /> Artist: {review.artist}</h4>
-          <h4><FaMapMarkerAlt /> Location: {review.location}</h4>
+          <h4>
+            <FaMicrophone /> Artist: {review.artist}
+          </h4>
+          <h4>
+            <FaMapMarkerAlt /> Location: {review.location}
+          </h4>
         </div>
         <div className="text-container mx-auto p-1">
           <p>{review.reviewText}</p>
@@ -50,6 +61,5 @@ const SingleReview = (props) => {
   );
 };
 
+// Export Single Review for Global App
 export default SingleReview;
-
-// What is problem

@@ -1,26 +1,37 @@
+// === PACKAGE IMPORT
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { POST_REVIEW } from "../utils/mutations";
-import { QUERY_REVIEWS, QUERY_ME } from "../utils/queries";
 import { Layout } from "antd";
 import { FaMicrophone } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa";
+
+// === FILE IMPORT
+import { POST_REVIEW } from "../utils/mutations";
+import { QUERY_REVIEWS, QUERY_ME } from "../utils/queries";
+
+// ANT Design created
 const { Content } = Layout;
 
+// Compose variable function to set state and create JSX
 const Compose = () => {
+  // Create state variables and set initial state
   const [formState, setFormState] = useState({
     artistText: "",
     locationText: "",
     reviewText: "",
   });
   const [characterCount, setCharacterCount] = useState(0);
+  // Navigation variable set to redirect users based on actions
   const navigate = useNavigate();
 
+  // Use mutation to post reviews
   const [postReview, { error }] = useMutation(POST_REVIEW, {
     update(cache, { data: { postReview } }) {
       try {
+        // Query me
         const { me } = cache.readQuery({ query: QUERY_ME });
+        // Write query and create new posts
         cache.writeQuery({
           query: QUERY_ME,
           data: { me: { ...me, reviews: [...me.reviews, postReview] } },
@@ -29,6 +40,7 @@ const Compose = () => {
         console.warn("First review made by user");
       }
 
+      // Query reviews to push data into all Reviews
       const { reviews } = cache.readQuery({ query: QUERY_REVIEWS });
       cache.writeQuery({
         query: QUERY_REVIEWS,
@@ -37,6 +49,7 @@ const Compose = () => {
     },
   });
 
+  // Handle change for the inputs and accept new stae
   const handleChange = (event) => {
     setFormState({
       ...formState,
@@ -47,6 +60,7 @@ const Compose = () => {
     }
   };
 
+  // Create new post using the state from inputs and reset to static state
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -69,9 +83,10 @@ const Compose = () => {
     });
     setCharacterCount(0);
 
-    navigate('/')
+    navigate("/");
   };
 
+  // Dynamic JSX for global App
   return (
     <Content className="mt-4">
       <form
@@ -127,4 +142,5 @@ const Compose = () => {
   );
 };
 
+// Export Compose
 export default Compose;

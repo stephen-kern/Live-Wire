@@ -1,10 +1,16 @@
+// === PACKAGE IMPORT ===
 import React from "react";
 import { Link } from "react-router-dom";
-import StripeApp from "../components/Stripe";
 import { FaGuitar, FaMicrophone } from "react-icons/fa";
 import { GiGuitarBassHead, GiDrumKit, GiTrumpet } from "react-icons/gi";
 import { CgPiano } from "react-icons/cg";
 
+// === FILE IMPORTS
+import StripeApp from "../components/Stripe";
+
+// Create Mission Variable Function and create Dynamic JSX
+// Insert Stripe functionality to the page
+// Link to creators Github as well
 const Mission = () => {
   return (
     <div className="card col-10 m-4 p-2 flex-column justify-center RL-card">
