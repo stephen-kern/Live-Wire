@@ -893,7 +893,7 @@ a {
 }
 
 /* col-sm */
-@media screen and (min-width: 640px) {
+@media screen and (max-width: 640px) {
   .col-sm-auto {
     flex-grow: 1;
     flex-basis: 0;
