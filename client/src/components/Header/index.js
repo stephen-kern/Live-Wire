@@ -32,7 +32,7 @@ const HeaderComponent = () => {
                 <Link to="/profile" className="nav-links">
                   Profile
                 </Link>
-                <a href="/" className="nav-links" onClick={logout}>
+                <a href="/" className="nav-links logout-btn" onClick={logout}>
                   Logout
                 </a>
               </>

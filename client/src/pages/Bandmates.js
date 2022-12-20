@@ -33,7 +33,7 @@ const Bandmates = () => {
       </h5>
       <div className="flex-row col-12 justify-space-around">
       {user.bandmates.map((bandmate) => (
-        <button className="btn w-35 display-block mb-2" key={bandmate._id}>
+        <button className="btn w-35 display-block mb-2 btn-shadow" key={bandmate._id}>
           <Link to={`/profile/${bandmate.username}`}>{bandmate.username}</Link>
         </button>
       ))}

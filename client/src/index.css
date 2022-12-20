@@ -265,6 +265,15 @@ a {
   color: var(--ant);
 }
 
+.logout-btn {
+  background-color: var(--dark);
+  box-shadow: 1px 1px var(--error);
+}
+
+.logout-btn:hover {
+  background-color: var(--error);
+}
+
 /* END VINCENT CUSTOM CSS */
 
 /* DISPLAY */

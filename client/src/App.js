@@ -23,6 +23,7 @@ import Mission from "./pages/Mission";
 import SingleReview from "./pages/SingleReview";
 import Profile from "./pages/Profile";
 import Bandmates from "./pages/Bandmates";
+import NoMatch from './pages/NoMatch';
 
 
 const httpLink = createHttpLink({
@@ -66,6 +67,7 @@ function App() {
                 path="/profile/bandmates/:username"
                 element={<Bandmates />}
               />              
+              <Route path="*" element={<NoMatch />} />
             </Routes>
           </div>
           <FooterComponent />
