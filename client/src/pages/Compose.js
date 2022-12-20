@@ -3,7 +3,8 @@ import { useMutation } from "@apollo/client";
 import { POST_REVIEW } from "../utils/mutations";
 import { QUERY_REVIEWS, QUERY_ME } from "../utils/queries";
 import { Layout } from "antd";
-
+import { FaMicrophone } from "react-icons/fa";
+import { FaMapMarkerAlt } from "react-icons/fa";
 const { Content } = Layout;
 
 const Compose = () => {
@@ -69,47 +70,57 @@ const Compose = () => {
   };
 
   return (
-        <Content className="mt-4">
-          <form
-            className="flex-row justify-center justify-space-between-md align-stretch"
-            onSubmit={handleFormSubmit}
-          >
+    <Content className="mt-4">
+      <form
+        className="justify-space-between-md align-stretch form-input card"
+        onSubmit={handleFormSubmit}
+      >
+        <h3 className="text-center mb-4">Write a Review</h3>
+        <div className="flex-row justify-space-around">
+          <div>
+            <FaMicrophone className="mr-2 mt-2" color="#04a777" />
             <input
               name="artistText"
-              className="artist-input"
-              placeholder="Who's playing?"
+              className="form-label "
+              placeholder="What Artist?"
               value={formState.artistText}
               onChange={handleChange}
             />
+          </div>
 
+          <div>
+            <FaMapMarkerAlt className="mr-2 mt-2" color="#04a777" />
             <input
               name="locationText"
-              className="location-input"
+              className="form-label"
               placeholder="Where at?"
               value={formState.locationText}
               onChange={handleChange}
             />
-
-            <textarea
-              placeholder="Here's what I'm thinking"
-              value={formState.reviewText}
-              className="form-input col-12 col-md-9"
-              name="reviewText"
-              onChange={handleChange}
-            ></textarea>
-            <p
-              className={`m-0 ${
-                characterCount === 1250 || error ? "text-error" : ""
-              }`}
-            >
-              Character Count: {characterCount}/1250
-              {error && <span className="ml-2">Something went wrong...</span>}
-            </p>
-            <button className="btn col-12 col-md-3" type="submit">
-              Submit
-            </button>
-          </form>
-        </Content>
+          </div>
+        </div>
+        <div className="flex-column">
+          <textarea
+            placeholder="..."
+            value={formState.reviewText}
+            className="form-input"
+            name="reviewText"
+            onChange={handleChange}
+          ></textarea>
+          <p
+            className={`mt-0 ${
+              characterCount === 1250 || error ? "text-error" : ""
+            }`}
+          >
+            Character Count: {characterCount}/1250
+            {error && <span className="ml-2">Something went wrong...</span>}
+          </p>
+        </div>
+        <button className="btn col-12 col-md-3" type="submit">
+          Submit
+        </button>
+      </form>
+    </Content>
   );
 };
 

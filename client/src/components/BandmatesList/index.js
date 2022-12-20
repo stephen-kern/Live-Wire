@@ -29,7 +29,7 @@ const BandmatesList = ({ bandmateCount, username, bandmates }) => {
 
   return (
     <div>
-      <h5>
+      <h5 className="mt-4">
         {username}'s {bandmateCount} {bandmateCount === 1 ? "Bandmate" : "Bandmates"}
       </h5>
       {bandmates.map((bandmate) => (

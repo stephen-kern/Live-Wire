@@ -39,7 +39,7 @@ const Login = (props) => {
       };
 
     return (
-        <main className='main-cont'>
+        <main className='main-cont mt-3'>
             <div className='card-container'>
                 <div className='card'>
                     <h4 className='card-header'>Login:</h4>
@@ -58,7 +58,7 @@ const Login = (props) => {
                             />
                             <input 
                             className='form-input'
-                            placeholder='*****'
+                            placeholder='Password'
                             name='password'
                             type='password'
                             id='password'

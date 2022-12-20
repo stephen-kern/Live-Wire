@@ -48,30 +48,30 @@ const Profile = () => {
 
   return (
     <div>
-      <div className="flex-row mb-3">
-        <h2 className="bg-dark text-secondary p-3 display-inline-block">
+      <div className="flex-row justify-space-between mt-3 mb-3">
+        <h2 className="bg-dark text-secondary p-4 display-inline-block profile-title-container">
           Viewing {userParam ? `${user.username}'s` : "your"} profile.
         </h2>
-        {userParam && (
+        <div className="col-12 col-lg-4 mb-3 mt-3">
+          <Link to={`/profile/bandmates/${user.username}`}>
+            <h3 className="mx-auto">{user.username}'s Bandmates: {user.bandmateCount}</h3>
+          </Link>
+          {userParam && (
           <button className="btn ml-auto" onClick={handleClick}>
             Add Bandmate
           </button>
         )}
+        </div>
       </div>
 
       <div className="flex-row justify-space-between mb-3">
-        <div className="col-12 mb-3 col-lg-8">
+        <div className="col-12 mx-auto col-lg-10">
           <ReviewList
             reviews={user.reviews}
             title={`${user.username} left these reviews`}
           />
         </div>
 
-        <div className="col-12 col-lg-3 mb-3">
-          <Link to={`/profile/bandmates/${user.username}`}>
-            <h3>{user.username}'s Bandmates: {user.bandmateCount}</h3>
-          </Link>
-        </div>
       </div>
     </div>
   );
