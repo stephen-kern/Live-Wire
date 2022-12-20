@@ -42,11 +42,11 @@ const CommentForm = ({ reviewId }) => {
                 <textarea
                 placeholder="Leave a comment..."
                 value={commentBody}
-                className='form-input col-10 col-md-6 col-lg-10 mx-auto'
+                className='form-input btn-shadow col-10 col-md-6 col-lg-10 mx-auto'
                 onChange={handleChange}>
                 </textarea>
 
-                <button className="btn col-4 col-md-3 mb-3 mx-auto" type="submit">
+                <button className="btn btn-shadow col-4 col-md-3 mb-3 mx-auto" type="submit">
                     Submit
                 </button>
             </form>

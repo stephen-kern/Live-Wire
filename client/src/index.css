@@ -8,6 +8,7 @@
   --light: #d7d6d6;
   --dark: #6c7575;
   --white: #FFF;
+  --ant: #001529;
   --error: rgb(228, 46, 1);
   --border-radius: 0.3rem;
   --spacing-one: calc(1rem * 0.25);
@@ -103,6 +104,7 @@ a {
 .logo {
   text-decoration: none;
   padding-top: 4px;
+  text-shadow: 1px 1px var(--white);
 }
 
 .nav-links {
@@ -114,6 +116,7 @@ a {
   color: var(--white);
   border-radius: 5px;
   text-decoration: none;
+  box-shadow: 1px 1px var(--white);
 }
 
 .nav a:hover {
@@ -123,6 +126,10 @@ a {
 
 .ghlogo{
   color: var(--dark);
+}
+
+.ghlogo:hover{
+  color: var(--primary);
 }
 
 .btn,
@@ -213,18 +220,52 @@ a {
   width: 92%;
 }
 
+.profile-title-container {
+  border-radius: var(--border-radius);
+  align-items: center;
+  box-shadow: 2px 2px 1.5px 1.5px var(--ant);
+
+}
+
+/* === VINCENT CUSTOM CSS === */
+
+.RL-card{
+  box-shadow: 2px 2px 1.5px 1.5px var(--ant);
+}
+
+.RL-user{
+  text-shadow: 2px 2px var(--ant);
+}
+
+.RL-h6{
+  text-shadow: 1px 1px var(--white);
+}
+.CL-h6{
+  text-shadow: 1px 1px var(--ant);
+}
+
 .text-container {
   background-color: var(--dark);
   border-radius: var(--border-radius);
   width: 90%;
   color: #FFF;
   margin: 2%;
+  box-shadow: 1.5px 1.5px var(--ant);
 }
 
-.profile-title-container {
-  border-radius: var(--border-radius);
-  align-items: center;
+.btn-shadow {
+  box-shadow: 1.5px 1.5px var(--ant);
 }
+
+.mission-color {
+  color: #04a777;
+}
+
+.mission-color:hover {
+  color: var(--ant);
+}
+
+/* END VINCENT CUSTOM CSS */
 
 /* DISPLAY */
 .display-none {

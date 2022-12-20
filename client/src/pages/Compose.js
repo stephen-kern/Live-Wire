@@ -75,7 +75,7 @@ const Compose = () => {
   return (
     <Content className="mt-4">
       <form
-        className="justify-space-between-md align-stretch form-input card"
+        className="justify-space-between-md align-stretch form-input card RL-card"
         onSubmit={handleFormSubmit}
       >
         <h3 className="text-center mb-4">Write a Review</h3>
@@ -84,7 +84,7 @@ const Compose = () => {
             <FaMicrophone className="mr-2 mt-2" color="#04a777" />
             <input
               name="artistText"
-              className="form-label "
+              className="form-label btn-shadow"
               placeholder="What Artist?"
               value={formState.artistText}
               onChange={handleChange}
@@ -95,7 +95,7 @@ const Compose = () => {
             <FaMapMarkerAlt className="mr-2 mt-2" color="#04a777" />
             <input
               name="locationText"
-              className="form-label"
+              className="form-label btn-shadow"
               placeholder="Where at?"
               value={formState.locationText}
               onChange={handleChange}
@@ -106,7 +106,7 @@ const Compose = () => {
           <textarea
             placeholder="..."
             value={formState.reviewText}
-            className="form-input"
+            className="form-input btn-shadow"
             name="reviewText"
             onChange={handleChange}
           ></textarea>
@@ -119,7 +119,7 @@ const Compose = () => {
             {error && <span className="ml-2">Something went wrong...</span>}
           </p>
         </div>
-        <button className="btn col-12 col-md-3" type="submit">
+        <button className="btn col-12 col-md-3 btn-shadow" type="submit">
           Submit
         </button>
       </form>

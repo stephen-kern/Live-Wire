@@ -22,7 +22,7 @@ const SingleReview = (props) => {
 
   return (
     <div className="mt-3">
-      <div className="card mb-3">
+      <div className="card mb-3 btn-shadow">
         <div className="flex-row justify-space-between card-header card-header-container pt-4">
           <h5>
             <Link

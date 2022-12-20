@@ -79,10 +79,10 @@ const Profile = () => {
         </h2>
         <div className="col-12 col-lg-4 mb-3 mt-3">
           <Link to={`/profile/bandmates/${user.username}`}>
-            <h3 className="mx-auto">{user.username}'s Bandmates: {user.bandmateCount}</h3>
+            <h3 className="mx-auto RL-h6">Bandmates: {user.bandmateCount}</h3>
           </Link>
           {userParam && !stateIncluded ? (
-          <button className="btn ml-auto" onClick={handleClick}>
+          <button className="btn btn-shadow ml-auto" onClick={handleClick}>
             <FaPlusCircle /> Add Bandmate
           </button>
         ) : (
