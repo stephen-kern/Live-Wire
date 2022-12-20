@@ -6,23 +6,20 @@ import { Link } from 'react-router-dom';
 
 // === File Imports ===
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
-import { ADD_BANDMATE } from "../utils/mutations";
+import { ADD_BANDMATE, REMOVE_BANDMATE } from "../utils/mutations";
 import Auth from "../utils/auth";
 import ReviewList from "../components/ReviewList";
 
 const Profile = () => {
   const [stateIncluded, setStateIncluded] = useState(false);
-
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
   const { data:me } = useQuery(QUERY_ME);
-
-  // console.log(me.me.bandmates);
-
-  const [addBandmate] = useMutation(ADD_BANDMATE);
   const user = data?.me || data?.user || {};
+  const [addBandmate] = useMutation(ADD_BANDMATE);
+  const [removeBandmate] = useMutation(REMOVE_BANDMATE);
 
   const navigate = useNavigate();
 
@@ -70,6 +67,16 @@ const Profile = () => {
     navigate(`/profile`)
   };
 
+  const handleRemoveBandmate = async () => {
+    try {
+      await removeBandmate({
+        variables: {id: user._id}
+      });
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
   return (
     <div>
       <div className="flex-row justify-space-between mt-3 mb-3">
@@ -85,7 +92,9 @@ const Profile = () => {
             Add Bandmate
           </button>
         ) : (
-          <></>
+          <button className="remove-bandmate-btn ml-auto" onClick={handleRemoveBandmate}>
+            Remove Bandmate
+          </button>
         )}
         </div>
       </div>

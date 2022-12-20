@@ -150,6 +150,24 @@ a {
   background-color: var(--white);
 }
 
+.remove-bandmate-btn{
+  font-size: 1.3rem;
+  text-decoration: none;
+  padding: 0.5rem 1.2rem;
+  margin: 5px 0;
+  border-radius: var(--border-radius);
+  border: none;
+  color: var(--error);
+  outline: none;
+  background-color: var(--white);
+  transition: all 0.5s;
+}
+
+.remove-bandmate-btn:hover{
+  color: var(--error);
+  background-color: #001529;
+}
+
 /* CARDS */
 .card {
   margin: 0 0 20px 0;

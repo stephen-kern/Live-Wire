@@ -84,8 +84,8 @@ export const ADD_BANDMATE = gql`
 `;
 
 export const REMOVE_BANDMATE = gql`
-	mutation removeBandmate($id: ID!) {
-		removeBandmate(id: $id) {
+	mutation removeBandmate($bandmateId: ID!) {
+		removeBandmate(bandmateId: $bandmateId) {
 			_id
 			username
 			bandmates {
