@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import CommentList from "../components/CommentList";
 import CommentForm from "../components/CommentForm";
@@ -24,12 +24,18 @@ const SingleReview = (props) => {
   return (
     <div className="mt-3">
       <div className="card mb-3">
-        <p className="card-header">
-          <span style={{ fontWeight: 700 }} className="">
-            {review.username}
-          </span>{" "}
-          Posted on {review.createdAt}
-        </p>
+        <div className="flex-row justify-space-between card-header card-header-container pt-4">
+          <h5>
+            <Link
+              to={`/profile/${review.username}`}
+              style={{ fontWeight: 700 }}
+              className="link-text-color"
+            >
+              {review.username}
+            </Link>{" "}
+          </h5>
+          <p>Posted on {review.createdAt}</p>
+        </div>
         <div className="card-tags flex-row justify-space-between m-2">
           <h4>Artist: {review.artist}</h4>
           <h4>Location: {review.location}</h4>
@@ -41,7 +47,6 @@ const SingleReview = (props) => {
       {Auth.loggedIn() && <CommentForm reviewId={review._id} />}
 
       {review.comments.length > 0 && <CommentList comments={review.comments} />}
-
     </div>
   );
 };
