@@ -2,6 +2,7 @@
 import React from "react";
 import { Layout } from "antd";
 import { Link } from "react-router-dom";
+import { FaBars } from "react-icons/fa";
 
 // === FILE IMPORTS ===
 import Auth from "../../utils/auth";
@@ -17,6 +18,8 @@ const HeaderComponent = () => {
     Auth.logout();
   };
 
+  const handleToggle = () => {};
+
   // JSX for global App that changes if a user is logged in
   return (
     <>
@@ -26,7 +29,7 @@ const HeaderComponent = () => {
             <h1 className="logo"> Live Wire </h1>
           </Link>
         </div>
-        <div className="nav-links-container">
+        <div>
           {Auth.loggedIn() ? (
             <>
               <Link to="/" className="nav-links">
@@ -52,6 +55,7 @@ const HeaderComponent = () => {
               </Link>
             </>
           )}
+          <FaBars className="menu-btn" onClick={handleToggle} />
         </div>
       </Header>
     </>
