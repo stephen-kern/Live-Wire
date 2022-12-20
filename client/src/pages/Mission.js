@@ -1,5 +1,5 @@
 import React from "react";
-import StripeApp from "../components/stripe";
+import StripeApp from "../components/Stripe";
 
 const Mission = () => {
 

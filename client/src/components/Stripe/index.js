@@ -4,14 +4,13 @@ import axios from 'axios';
 import Stripe from "react-stripe-checkout";
 
 
-function StripeApp() {
-    handleToken = (totalAmount, token) => {
+const StripeApp = () => {
+    const handleToken = (totalAmount, token) => {
         try {
             axios.post("http://localhost:5000/api/stripe/pay", {
-              token: token.id,
-              amount: totalAmount
-            }),
-        //why is curly bracket underlined?    
+                token: token.id,
+                amount: totalAmount
+            });
         } catch (error) {
             console.log(error);
         };     
@@ -28,6 +27,6 @@ function StripeApp() {
               />
           </div>
         );
-  }
+}
 
   export default StripeApp;
