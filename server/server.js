@@ -37,14 +37,14 @@ app.get('/', (req, res) => {
 });
 
 //begin stripe code for backend
-router.get('/', (req, res, next) => {
+app.get('/', (req, res, next) => {
   console.log("Get Response From Researcher");
   res.json({
     message: 'It Works'
   });
 });
 
-router.post("/pay", (req, res, next) => {
+app.post("/pay", (req, res, next) => {
   console.log(req.body.token);
   const {token, amount} =req.body;
   const idempotencyKey = uuidv4();

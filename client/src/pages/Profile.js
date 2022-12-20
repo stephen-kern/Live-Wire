@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, Navigate, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { Link } from 'react-router-dom';
+import { FaPlusCircle } from "react-icons/fa"
 
 // === File Imports ===
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
@@ -82,7 +83,8 @@ const Profile = () => {
           </Link>
           {userParam && !stateIncluded ? (
           <button className="btn ml-auto" onClick={handleClick}>
-            Add Bandmate
+            <FaPlusCircle
+            className="" /> Add Bandmate
           </button>
         ) : (
           <></>
