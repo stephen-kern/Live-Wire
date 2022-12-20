@@ -1,12 +1,16 @@
+// === PACKAGE IMPORT ===
 import React from "react";
 import { Link } from "react-router-dom";
-import { BsFillChatDotsFill } from 'react-icons/bs';
+import { BsFillChatDotsFill } from "react-icons/bs";
 
+// Comment List Dynamic JSX for Global App
 const CommentList = ({ comments }) => {
   return (
     <div className="card mb-3 btn-shadow">
       <div className="card-header">
-        <h6 className="CL-h6"><BsFillChatDotsFill /> Comments:</h6>
+        <h6 className="CL-h6">
+          <BsFillChatDotsFill /> Comments:
+        </h6>
       </div>
       <div className="card-body">
         {comments &&
@@ -29,4 +33,5 @@ const CommentList = ({ comments }) => {
   );
 };
 
+// Export CommentList
 export default CommentList;

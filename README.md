@@ -101,5 +101,7 @@ Video Demonstration Here
 
 Questions, comments, or concerns? Please Email us at:
 
-- vincenttoon22@gmail.com
+- mamadou1991@outlook.com
+- scottrinaberger@gmail.com
 - Stephenkern96@gmail.com
+- vincenttoon22@gmail.com
