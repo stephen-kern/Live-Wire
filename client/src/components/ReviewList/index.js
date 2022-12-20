@@ -12,7 +12,8 @@ const ReviewList = ({ reviews, title }) => {
       {reviews &&
         reviews.map((review) => (
           <div key={review._id} className="card mb-3 mt-3">
-            <p className="card-header">
+            <div className="flex-row justify-space-between card-header card-header-container pt-4">
+            <h5>
               <Link
                 to={`/profile/${review.username}`}
                 style={{ fontWeight: 700 }}
@@ -20,8 +21,11 @@ const ReviewList = ({ reviews, title }) => {
               >
                 {review.username}
               </Link>{" "}
-              Posted on {review.createdAt}
+            </h5>
+            <p>
+            Posted on {review.createdAt}
             </p>
+            </div>
             <div className="card-sub-head justify-space-between">
               <div className="flex-row justify-space-between m-1">
                 <h6 className="ml-2 mt-2">Artist: {review.artist}</h6>
