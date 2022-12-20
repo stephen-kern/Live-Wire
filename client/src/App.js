@@ -13,7 +13,7 @@ import { Layout } from "antd";
 import HeaderComponent from "./components/Header";
 import FooterComponent from "./components/Footer";
 //import Stripe
-//import StripeApp from "./components/stripe";  
+//import StripeApp from "./components/stripe";
 // === Page Imports ===
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -23,13 +23,14 @@ import Mission from "./pages/Mission";
 import SingleReview from "./pages/SingleReview";
 import Profile from "./pages/Profile";
 import Bandmates from "./pages/Bandmates";
-import NoMatch from './pages/NoMatch';
+import NoMatch from "./pages/NoMatch";
 
-
+// create http link to connect to graphQl backend
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
+// Set AuthLink to tokens for authorization of logged in users
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
   return {
@@ -40,13 +41,16 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+// create new Apollo client for application, confirm authorization and use http link. Update Cache
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
+// Primary App to run webpage, Use Ant Design to assist in layout, call Routes and Components to populate single page application
 function App() {
   return (
+    // Call in Apollo provider and connect the client
     <ApolloProvider client={client}>
       <Layout className="app">
         <Router>
@@ -66,7 +70,7 @@ function App() {
               <Route
                 path="/profile/bandmates/:username"
                 element={<Bandmates />}
-              />              
+              />
               <Route path="*" element={<NoMatch />} />
             </Routes>
           </div>
@@ -77,6 +81,5 @@ function App() {
   );
 }
 
-
-
+// export Application
 export default App;
