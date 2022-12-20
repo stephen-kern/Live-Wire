@@ -117,6 +117,19 @@ const resolvers = {
 
 			throw new AuthenticationError('You need to be logged in!');
 		},
+		removeBandmate: async (parent, { bandmateId }, context) => {
+			if (context.user) {
+				const updatedUser = await User.findOneAndUpdate(
+					{ _id: context.user._id },
+					{ $pull: { bandmates: bandmateId } },
+					{ new: true }
+				).populate('bandmates');
+
+				return updatedUser;
+			}
+
+			throw new AuthenticationError('You need to be logged in!');
+		},
 	},
 };
 

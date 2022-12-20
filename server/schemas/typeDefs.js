@@ -58,6 +58,7 @@ const typeDefs = gql`
 		removeReview(reviewId: String!): User
 		addComment(reviewId: ID!, commentBody: String!): Review
 		addBandmate(bandmateId: ID!): User
+		removeBandmate(bandmateId: ID!): User
 	}
 `;
 
