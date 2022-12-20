@@ -27,6 +27,19 @@ export const ADD_USER = gql`
       user {
         _id
         username
+        username
+      }
+    }
+  }
+`;
+
+export const ADD_USER = gql`
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
       }
     }
   }
@@ -77,7 +90,24 @@ export const ADD_COMMENT = gql`
       comment {
         _id
         commentBody
+        commentBody
         createdAt
+        username
+      }
+    }
+  }
+`;
+
+export const ADD_BANDMATE = gql`
+  mutation addBandmate($id: ID!) {
+    addBandmate(bandmateId: $id) {
+        _id
+        username
+        bandmateCount
+        bandmates {
+            _id
+            username
+        }
         username
       }
     }
@@ -101,7 +131,15 @@ export const ADD_BANDMATE = gql`
 export const REMOVE_BANDMATE = gql`
   mutation removeBandmate($id: ID!) {
     removeBandmate(id: $id) {
+export const REMOVE_BANDMATE = gql`
+  mutation removeBandmate($id: ID!) {
+    removeBandmate(id: $id) {
         _id
+        username
+        bandmates {
+            _id
+            username
+        }
         username
         bandmates {
             _id
