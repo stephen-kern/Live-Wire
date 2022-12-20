@@ -22,7 +22,7 @@
 }
 
 html {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
@@ -121,6 +121,10 @@ a {
   opacity: 0.8;
 }
 
+.nav-active{
+  background-color: none;
+}
+
 .ghlogo{
   color: var(--dark);
 }
@@ -148,6 +152,11 @@ a {
 .alt-btn{
   color: var(--primary);
   background-color: var(--white);
+}
+
+.alt-btn:hover{
+  background-color: var(--primary);
+  color: var(--white);
 }
 
 /* CARDS */
