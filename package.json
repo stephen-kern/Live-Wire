@@ -2,7 +2,7 @@
   "name": "live-wire",
   "description": "social media platform for music lovers to share their opinions on music, shows, artists, and more.",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server/server.js",
   "devDependencies": {
     "concurrently": "^7.6.0"
   },
@@ -11,7 +11,7 @@
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
-    "build": "cd server && npm run-script"
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
