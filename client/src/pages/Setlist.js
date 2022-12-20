@@ -4,7 +4,7 @@ import ReviewList from "../components/ReviewList";
 import { useQuery } from "@apollo/client";
 
 // === FILE IMPORTS ===
-import { QUERY_REVIEWS, QUERY_ME_BASIC } from "../utils/queries";
+import { QUERY_REVIEWS } from "../utils/queries";
 import Mission from "./Mission";
 import Auth from "../utils/auth";
 
@@ -12,8 +12,6 @@ import Auth from "../utils/auth";
 const Setlist = () => {
   // Query Reviews and Basic Me info
   const { loading, data } = useQuery(QUERY_REVIEWS);
-  const { data: userData } = useQuery(QUERY_ME_BASIC);
-  // Assign
   const reviews = data?.reviews || [];
 
   // Check User is logged in to change returned JSX

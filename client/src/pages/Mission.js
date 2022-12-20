@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaGuitar, FaMicrophone } from "react-icons/fa";
-import { GiGuitarBassHead, GiDrumKit, GiTrumpet } from "react-icons/gi";
+import { GiDrumKit } from "react-icons/gi";
 import { CgPiano } from "react-icons/cg";
 
 // === FILE IMPORTS
