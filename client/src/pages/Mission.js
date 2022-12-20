@@ -1,4 +1,5 @@
 import React from "react";
+import StripeApp from "../components/stripe";
 
 const Mission = () => {
 
@@ -15,6 +16,7 @@ const Mission = () => {
         </h4>
         <button className="btn mx-auto justify-center">
           Donate
+          <StripeApp/>
         </button>
         <p className="mx-auto">
           Please feel free to donate so our developers can work on making this application even better for all music lovers

@@ -13,7 +13,7 @@ import { Layout } from "antd";
 import HeaderComponent from "./components/Header";
 import FooterComponent from "./components/Footer";
 //import Stripe
-import StripeComponent from "./components/Stripe";  //still need to add to app() below......
+import StripeApp from "./components/Stripe";  //still need to add to app() below......
 // === Page Imports ===
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";

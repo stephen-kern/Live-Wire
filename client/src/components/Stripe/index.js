@@ -29,3 +29,5 @@ function StripeApp() {
           </div>
         );
   }
+
+  export default StripeApp;
