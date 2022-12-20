@@ -31,19 +31,19 @@ const Mission = () => {
             <FaGuitar /> Stephen{" "}
           </p>
         </Link>
-        <Link>
+        <Link to={"https://github.com/Vincenttoon"}>
           <p className="mission-color">
             {" "}
             <FaMicrophone /> Vincent{" "}
           </p>
         </Link>
-        <Link>
+        <Link to={"https://github.com/Rinaberger"}>
           <p className="mission-color">
             {" "}
             <CgPiano /> Scott{" "}
           </p>
         </Link>
-        <Link>
+        <Link to={"https://github.com/mamadou1991"}>
           <p className="mission-color">
             {" "}
             <GiDrumKit /> Mamadou{" "}
