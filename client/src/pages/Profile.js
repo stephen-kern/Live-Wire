@@ -1,5 +1,5 @@
 // === Package Imports ===
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Navigate, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { Link } from 'react-router-dom';
@@ -11,15 +11,34 @@ import Auth from "../utils/auth";
 import ReviewList from "../components/ReviewList";
 
 const Profile = () => {
+  const [stateIncluded, setStateIncluded] = useState(false);
+
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam},
+    variables: { username: userParam },
   });
+  const { data:me } = useQuery(QUERY_ME);
+
+  // console.log(me.me.bandmates);
+
   const [addBandmate] = useMutation(ADD_BANDMATE);
   const user = data?.me || data?.user || {};
 
   const navigate = useNavigate();
 
+
+  const isIncluded = (username, array) => {
+    return array.some((user) => user.username === username)
+  }
+
+  useEffect(() => {
+    if (me && user) {
+      setStateIncluded(isIncluded(user.username, me.me.bandmates))
+    } 
+    // eslint-disable-next-line
+  }, [])
+
+  
   // navigate to personal profile page if username is the logged-in user's
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/profile" />;
@@ -37,6 +56,7 @@ const Profile = () => {
       </h4>
     );
   }
+
 
   const handleClick = async () => {
     try {
@@ -60,10 +80,12 @@ const Profile = () => {
           <Link to={`/profile/bandmates/${user.username}`}>
             <h3 className="mx-auto">{user.username}'s Bandmates: {user.bandmateCount}</h3>
           </Link>
-          {userParam && (
+          {userParam && !stateIncluded ? (
           <button className="btn ml-auto" onClick={handleClick}>
             Add Bandmate
           </button>
+        ) : (
+          <></>
         )}
         </div>
       </div>
