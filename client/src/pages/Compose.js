@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom'
 import { useMutation } from "@apollo/client";
 import { POST_REVIEW } from "../utils/mutations";
 import { QUERY_REVIEWS, QUERY_ME } from "../utils/queries";
@@ -13,8 +14,8 @@ const Compose = () => {
     locationText: "",
     reviewText: "",
   });
-
   const [characterCount, setCharacterCount] = useState(0);
+  const navigate = useNavigate();
 
   const [postReview, { error }] = useMutation(POST_REVIEW, {
     update(cache, { data: { postReview } }) {
@@ -67,6 +68,8 @@ const Compose = () => {
       reviewText: "",
     });
     setCharacterCount(0);
+
+    navigate('/')
   };
 
   return (
