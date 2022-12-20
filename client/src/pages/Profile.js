@@ -1,6 +1,6 @@
 // === Package Imports ===
 import React from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { useNavigate, Navigate, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { Link } from 'react-router-dom';
 
@@ -13,10 +13,12 @@ import ReviewList from "../components/ReviewList";
 const Profile = () => {
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam },
+    variables: { username: userParam},
   });
   const [addBandmate] = useMutation(ADD_BANDMATE);
   const user = data?.me || data?.user || {};
+
+  const navigate = useNavigate();
 
   // navigate to personal profile page if username is the logged-in user's
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
@@ -44,6 +46,8 @@ const Profile = () => {
     } catch (e) {
       console.error(e);
     }
+
+    navigate(`/profile`)
   };
 
   return (
