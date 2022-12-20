@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaMicrophone, FaMapMarkerAlt } from "react-icons/fa";
+import { BsFillChatDotsFill } from 'react-icons/bs';
 
 const ReviewList = ({ reviews, title }) => {
   if (!reviews.length) {
@@ -28,8 +30,8 @@ const ReviewList = ({ reviews, title }) => {
             </div>
             <div className="card-sub-head justify-space-between">
               <div className="flex-row justify-space-between m-1">
-                <h6 className="ml-2 mt-2">Artist: {review.artist}</h6>
-                <h6 className="ml-2 mt-2">Location: {review.location}</h6>
+                <h6 className="ml-2 mt-2"><FaMicrophone /> Artist: {review.artist}</h6>
+                <h6 className="ml-2 mt-2"><FaMapMarkerAlt /> Location: {review.location}</h6>
               </div>
               <div className="text-container mx-auto p-1">
                 <p className="ml-2 mt-2">{review.reviewText}</p>
@@ -37,7 +39,7 @@ const ReviewList = ({ reviews, title }) => {
             </div>
             <div>
               <Link to={`/review/${review._id}`}>
-                <h6 className="text-dark ml-2 mt-3">Comments:</h6>
+                <h6 className="text-dark ml-2 mt-3"><BsFillChatDotsFill /> Comments:</h6>
                 <p className="ml-2 mt-2 text-dark">
                   {review.commentCount}{" "}
                   <span className="text-primary"> Click </span> to{" "}

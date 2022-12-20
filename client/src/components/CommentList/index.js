@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { BsFillChatDotsFill } from 'react-icons/bs';
 
 const CommentList = ({ comments }) => {
   return (
     <div className="card mb-3">
       <div className="card-header">
-        <h6 className="">Comments:</h6>
+        <h6 className=""><BsFillChatDotsFill /> Comments:</h6>
       </div>
       <div className="card-body">
         {comments &&

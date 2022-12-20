@@ -1,12 +1,11 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-
 import CommentList from "../components/CommentList";
 import CommentForm from "../components/CommentForm";
-
 import Auth from "../utils/auth";
 import { useQuery } from "@apollo/client";
 import { QUERY_REVIEW } from "../utils/queries";
+import { FaMicrophone, FaMapMarkerAlt } from "react-icons/fa";
 
 const SingleReview = (props) => {
   const { id: reviewId } = useParams();
@@ -37,8 +36,8 @@ const SingleReview = (props) => {
           <p>Posted on {review.createdAt}</p>
         </div>
         <div className="card-tags flex-row justify-space-between m-2">
-          <h4>Artist: {review.artist}</h4>
-          <h4>Location: {review.location}</h4>
+          <h4><FaMicrophone /> Artist: {review.artist}</h4>
+          <h4><FaMapMarkerAlt /> Location: {review.location}</h4>
         </div>
         <div className="text-container mx-auto p-1">
           <p>{review.reviewText}</p>

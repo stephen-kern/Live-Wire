@@ -83,8 +83,7 @@ const Profile = () => {
           </Link>
           {userParam && !stateIncluded ? (
           <button className="btn ml-auto" onClick={handleClick}>
-            <FaPlusCircle
-            className="" /> Add Bandmate
+            <FaPlusCircle /> Add Bandmate
           </button>
         ) : (
           <></>
