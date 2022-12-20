@@ -1,5 +1,7 @@
+/* Import select font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Unbounded&display=swap');
 
+/* === START Base Rules for Custom CSS === */
 :root {
   --primary: #04a777;
   --secondary: #04a777;
@@ -92,7 +94,10 @@ a {
   color: var(--white);
   text-decoration: none;
 }
+/* === START Base Rules for Custom CSS === */
 
+/* === START CUSTOM CSS === */
+/* === START NAV === */
 .nav{
   display: flex;
   flex-direction: row;
@@ -131,7 +136,9 @@ a {
 .ghlogo:hover{
   color: var(--primary);
 }
+/* === END NAV === */
 
+/* === START BUTTON === */
 .btn,
 .pill {
   font-size: 1.3rem;
@@ -156,8 +163,9 @@ a {
   color: var(--primary);
   background-color: var(--white);
 }
+/* === END BUTTON === */
 
-/* CARDS */
+/* === START CARDS === */
 .card {
   margin: 0 0 20px 0;
   border: 3px solid var(--dark);
@@ -178,14 +186,9 @@ a {
   padding: 2.5%;
   font-size: 1.4rem;
 }
+/* === END CARD === */
 
-/* FORM */
-/* .form-label,
-.form-input,
-.form-textarea {
-  display: block;
-} */
-
+/* === START FORM === */
 .form-label {
   font-size: 1.2rem;
   margin: 0.625rem 0 0.25rem;
@@ -206,8 +209,9 @@ a {
   display: flex;
   flex-direction: row;
 }
+/* === END FORM === */
 
-/* LAYOUT */
+/* === START CONTAINER === */
 .container {
   flex-grow: 1;
   width: 95%;
@@ -226,8 +230,9 @@ a {
   box-shadow: 2px 2px 1.5px 1.5px var(--ant);
 
 }
+/* === END CONTAINER === */
 
-/* === VINCENT CUSTOM CSS === */
+/* === START VINCENT CUSTOM CSS === */
 
 .RL-card{
   box-shadow: 2px 2px 1.5px 1.5px var(--ant);
@@ -274,9 +279,9 @@ a {
   background-color: var(--error);
 }
 
-/* END VINCENT CUSTOM CSS */
+/* === END VINCENT CUSTOM CSS === */
 
-/* DISPLAY */
+/* === START DISPLAY === */
 .display-none {
   display: none;
 }
@@ -292,8 +297,9 @@ a {
 .display-inline {
   display: inline;
 }
+/* === END DISPLAY === */
 
-/* HEIGHT / WIDTH UTILS */
+/* === START HEIGHT / WIDTH UTILS === */
 .w-100 {
   width: 100%;
 }
@@ -321,8 +327,9 @@ a {
 .min-100-vw {
   min-width: 100vw;
 }
+/* === END HEIGHT / WIDTH UTILS === */
 
-/* MARGIN/PADDING UTILS */
+/* === START MARGIN UTILS === */
 
 /* Margin - all sides */
 .m-0 {
@@ -546,7 +553,9 @@ a {
   margin-top: auto;
   margin-bottom: auto;
 }
+/* === END MARGIN UTILS === */
 
+/* === START PADDING UTILS === */
 /* Padding - all sides */
 .p-0 {
   padding: 0;
@@ -769,8 +778,9 @@ a {
   padding-top: auto;
   padding-bottom: auto;
 }
+/* === END PADDING UTILS === */
 
-/* FONT UTILS */
+/* === START FONT UTILS === */
 .text-uppercase {
   text-transform: uppercase;
 }
@@ -814,8 +824,9 @@ a {
 .text-error {
   color: var(--error);
 }
+/* === END FONT UTILS === */
 
-/* BACKGROUND UTILS */
+/* === START BACKGROUND UTILS === */
 .bg-primary {
   background-color: var(--primary);
 }
@@ -835,8 +846,9 @@ a {
 .bg-dark {
   background-color: var(--dark);
 }
+/* === END BACKGROUND UTILS === */
 
-/* FLEX CONTENT */
+/* === START FLEX CONTENT === */
 .flex-row {
   display: flex;
   flex-wrap: wrap;
@@ -932,6 +944,7 @@ a {
 .col-12 {
   flex: 0 0 100%;
 }
+/* === END FLEX CONTENT === */
 
 /* col-sm */
 @media screen and (min-width: 640px) {
