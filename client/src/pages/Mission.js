@@ -1,6 +1,5 @@
 // === PACKAGE IMPORT ===
 import React from "react";
-import { Link } from "react-router-dom";
 import { FaGuitar, FaMicrophone } from "react-icons/fa";
 import { GiDrumKit } from "react-icons/gi";
 import { CgPiano } from "react-icons/cg";
@@ -31,30 +30,30 @@ const Mission = () => {
       </p>
       <h6 className="mx-auto">Created By:</h6>
       <h3 className="flex-row justify-space-around">
-        <Link to={`https://github.com/stephen-kern`}>
+        <a href="https://github.com/stephen-kern">
           <p className="mission-color">
             {" "}
             <FaGuitar /> Stephen{" "}
           </p>
-        </Link>
-        <Link to={"https://github.com/Vincenttoon"}>
+        </a>
+        <a href="https://github.com/Vincenttoon">
           <p className="mission-color">
             {" "}
             <FaMicrophone /> Vincent{" "}
           </p>
-        </Link>
-        <Link to={"https://github.com/Rinaberger"}>
+        </a>
+        <a href="https://github.com/Rinaberger">
           <p className="mission-color">
             {" "}
             <CgPiano /> Scott{" "}
           </p>
-        </Link>
-        <Link to={"https://github.com/mamadou1991"}>
+        </a>
+        <a href="https://github.com/mamadou1991">
           <p className="mission-color">
             {" "}
             <GiDrumKit /> Mamadou{" "}
           </p>
-        </Link>
+        </a>
       </h3>
     </div>
   );
