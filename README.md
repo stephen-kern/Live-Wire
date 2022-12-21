@@ -38,7 +38,7 @@
 
 ## Live Deployment
 
-[Live Wire Live Deployment Link](https://secure-shore-15914.herokuapp.com/)
+[Live Wire Live Deployment Link](https://live-wire-music.herokuapp.com/)
 
 ## Installation
 
