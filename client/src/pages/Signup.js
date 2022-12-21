@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
+// === PACKAGE IMPORTS ===
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
 
-import Auth from '../utils/auth';
+// === FILE IMPORTS ===
+import { ADD_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
 
+// Signup single Page functionality and JSX
 const Signup = () => {
-//   logic here...
+  // Create State variables and set their static state
   const [formState, setFormState] = useState({
-    username: '',
-    email: '',
-    password: ''
+    username: "",
+    email: "",
+    password: "",
   });
+  // Create Add User variable through mutation and add error checking variable
   const [addUser, { error }] = useMutation(ADD_USER);
 
+  // Variable Function to set User target and change state
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -26,27 +31,27 @@ const Signup = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    // Add Data to User through State
     try {
       const { data } = await addUser({
         variables: { ...formState },
       });
 
+      // Assign JWToken to newly signed up user
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
   };
 
-
+  // Dynamically generated JSX Return for Single Page application
   return (
     <main className="main-cont mt-3">
       <div className="card-cont">
         <div className="card">
           <h4 className="card-header">Sign Up</h4>
           <div className="card-body">
-            <form 
-            onSubmit={handleFormSubmit}
-            >
+            <form onSubmit={handleFormSubmit}>
               <input
                 className="form-input"
                 placeholder="Username"
@@ -87,4 +92,5 @@ const Signup = () => {
   );
 };
 
+// Export Signup for Global Application
 export default Signup;

@@ -1,5 +1,7 @@
+// Import Packages
 import { gql } from "@apollo/client";
 
+// Query Logged In User and export it
 export const QUERY_ME = gql`
   {
     me {
@@ -32,6 +34,7 @@ export const QUERY_ME = gql`
   }
 `;
 
+// Query logged in user with fewer details (unused) and export it
 export const QUERY_ME_BASIC = gql`
   {
     me {
@@ -47,6 +50,7 @@ export const QUERY_ME_BASIC = gql`
   }
 `;
 
+// Query individual User and export it
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
@@ -73,7 +77,7 @@ export const QUERY_USER = gql`
   }
 `;
 
-// still need QUERY_REVIEW
+// Query individual Review and export it
 export const QUERY_REVIEW = gql`
   query review($id: ID!) {
     review(_id: $id) {
@@ -93,6 +97,7 @@ export const QUERY_REVIEW = gql`
   }
 `;
 
+// Query multiple Reviews
 export const QUERY_REVIEWS = gql`
   query reviews($username: String) {
     reviews(username: $username) {

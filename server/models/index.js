@@ -1,4 +1,6 @@
-const User = require('./User');
-const Review = require('./Review');
+// Import Models for exporting
+const User = require("./User");
+const Review = require("./Review");
 
-module.exports = { User, Review};
+// Export them models
+module.exports = { User, Review };
