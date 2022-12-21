@@ -137,6 +137,10 @@ a {
 .menu-btn{
   color: var(--white);  
   font-size: 175%;
+  position: absolute;
+  top: 1.4rem;
+  right: 1rem;
+  display: none;
 }
 
 .ghlogo{
@@ -966,8 +970,12 @@ a {
 @media screen and (max-width: 720px) {
 
   .logo{
-    font-size: 1.3em;
+    font-size: 1.5em;
     margin-top: 15%;
+  }
+
+  .nav{
+    padding: 0;
   }
 
   .col-sm-auto {
@@ -1059,7 +1067,14 @@ a {
 /* col-md */
 @media screen and (max-width: 810px) {
 
-  
+  .menu-btn{
+    display: flex;
+  }
+
+  .nav-links{
+    display: none;
+  }
+
 
   .col-md-auto {
     flex-grow: 1;

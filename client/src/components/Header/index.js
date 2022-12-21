@@ -6,7 +6,8 @@ import { FaBars } from "react-icons/fa";
 
 // === FILE IMPORTS ===
 import Auth from "../../utils/auth";
-
+import DropdownMenuLI from "../Dropdown";
+import DropdownMenuLO from "../Dropdown/DropdownMenuLO";
 // ANT Layout for Header
 const { Header } = Layout;
 
@@ -29,7 +30,7 @@ const HeaderComponent = () => {
             <h1 className="logo"> Live Wire </h1>
           </Link>
         </div>
-        <div>
+        <div className="nav-links-container">
           {Auth.loggedIn() ? (
             <>
               <Link to="/" className="nav-links">
@@ -55,7 +56,7 @@ const HeaderComponent = () => {
               </Link>
             </>
           )}
-          <FaBars className="menu-btn" onClick={handleToggle} />
+          {Auth.loggedIn() ? ( <DropdownMenuLI /> ): ( <DropdownMenuLO /> ) }
         </div>
       </Header>
     </>
