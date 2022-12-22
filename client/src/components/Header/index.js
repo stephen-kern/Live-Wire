@@ -2,7 +2,6 @@
 import React from "react";
 import { Layout } from "antd";
 import { Link } from "react-router-dom";
-import { FaBars } from "react-icons/fa";
 
 // === FILE IMPORTS ===
 import Auth from "../../utils/auth";
@@ -18,8 +17,6 @@ const HeaderComponent = () => {
     event.preventDefault();
     Auth.logout();
   };
-
-  const handleToggle = () => {};
 
   // JSX for global App that changes if a user is logged in
   return (

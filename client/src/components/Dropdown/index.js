@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { DownOutlined } from "@ant-design/icons";
-import { Dropdown, Space } from "antd";
+import { Dropdown } from "antd";
 import { FaBars } from "react-icons/fa";
 import Auth from "../../utils/auth";
 
